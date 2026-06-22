@@ -1,0 +1,2256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD-UBAOS™ v3.4 — AI Business Operating System</title>
+<meta name="description" content="MD-UBAOS™ is an AI Business Operating System that turns SAP, Excel, Power BI, ERP, and MES data into executive insights, forecasts, and action plans in minutes — not days.">
+<link rel="canonical" href="https://bizmindai.com/md-ubaos">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MD-UBAOS™">
+<meta property="og:title" content="MD-UBAOS™ v3.4 — AI Business Operating System">
+<meta property="og:description" content="Transform Data Into Decisions™. MD-UBAOS™ turns enterprise data from SAP, Excel, Power BI, ERP, and MES into executive insights, forecasts, and action plans in minutes.">
+<meta property="og:url" content="https://bizmindai.com/md-ubaos">
+<meta property="og:image" content="https://bizmindai.com/og/md-ubaos-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="th_TH">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MD-UBAOS™ v3.4 — AI Business Operating System">
+<meta name="twitter:description" content="Transform Data Into Decisions™. Enterprise data from SAP, Excel, Power BI, ERP, and MES — turned into executive insights, forecasts, and action plans in minutes.">
+<meta name="twitter:image" content="https://bizmindai.com/og/md-ubaos-cover.png">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2336d6e8'/%3E%3Cstop offset='1' stop-color='%233b82f6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Crect x='9' y='9' width='14' height='14' rx='3' fill='none' stroke='%2306090f' stroke-width='2'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-950:#06090f;
+  --navy-900:#0a0f1a;
+  --navy-800:#0f1626;
+  --graphite-700:#161d2e;
+  --line:rgba(255,255,255,0.08);
+  --line-strong:rgba(255,255,255,0.14);
+  --cyan:#36d6e8;
+  --blue:#3b82f6;
+  --blue-glow:#5b8cff;
+  --text-hi:#f4f7fb;
+  --text-mid:#aab4c8;
+  --text-low:#828da1;
+  --mono:'IBM Plex Mono',monospace;
+  --disp:'Space Grotesk',sans-serif;
+  --thai:'Noto Sans Thai','Inter',sans-serif;
+  --body:'Inter',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--navy-950);
+  color:var(--text-hi);
+  font-family:var(--body);
+  line-height:1.6;
+  overflow-x:hidden;
+  position:relative;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(59,130,246,0.18), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 20%, rgba(54,214,232,0.08), transparent 60%);
+  pointer-events:none;
+  z-index:0;
+}
+.th{font-family:var(--thai);}
+::selection{background:var(--cyan);color:#06090f;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--cyan);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.eyebrow::before{
+  content:'';
+  width:6px;height:6px;
+  background:var(--cyan);
+  border-radius:1px;
+  box-shadow:0 0 8px var(--cyan);
+}
+.section-title{
+  font-family:var(--disp);
+  font-weight:700;
+  font-size:clamp(28px,4vw,46px);
+  letter-spacing:-0.01em;
+  line-height:1.15;
+  margin-top:14px;
+}
+.section-sub{
+  color:var(--text-mid);
+  font-size:17px;
+  max-width:640px;
+  margin-top:14px;
+}
+.section{
+  position:relative;
+  padding:120px 0;
+  border-bottom:1px solid var(--line);
+}
+.glass{
+  background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+  border:1px solid var(--line);
+  border-radius:16px;
+  backdrop-filter:blur(20px);
+}
+.reveal{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.js-ready .reveal{opacity:0;transform:translateY(24px);}
+.js-ready .reveal.in{opacity:1;transform:translateY(0);}
+
+/* NAV */
+header{
+  position:fixed;top:0;left:0;right:0;
+  z-index:100;
+  backdrop-filter:blur(16px);
+  background:rgba(6,9,15,0.7);
+  border-bottom:1px solid var(--line);
+}
+nav{
+  position:relative;
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:1240px;margin:0 auto;padding:18px 32px;
+}
+.logo{
+  font-family:var(--disp);font-weight:700;font-size:18px;
+  display:flex;align-items:center;gap:10px;
+  letter-spacing:-0.01em;
+}
+.logo .mark{
+  width:28px;height:28px;border-radius:6px;
+  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  position:relative;
+}
+.logo .mark::after{
+  content:'';position:absolute;inset:6px;
+  border:1.5px solid var(--navy-950);
+  border-radius:3px;
+}
+.nav-links{display:flex;gap:36px;font-size:14px;color:var(--text-mid);}
+.nav-links a:hover{color:var(--text-hi);}
+.nav-cta{
+  font-family:var(--mono);font-size:13px;
+  padding:9px 18px;border-radius:8px;
+  border:1px solid var(--line-strong);
+  background:rgba(255,255,255,0.03);
+  transition:all .2s;
+}
+.nav-cta:hover{border-color:var(--cyan);background:rgba(54,214,232,0.08);}
+.nav-cta-mobile{display:none;}
+.nav-toggle{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  width:36px;height:36px;
+  background:transparent;
+  border:1px solid var(--line-strong);
+  border-radius:8px;
+  cursor:pointer;
+  padding:0;
+}
+.nav-toggle span{
+  display:block;width:16px;height:1.5px;
+  background:var(--text-hi);
+  margin:0 auto;
+  transition:transform .25s,opacity .25s;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+/* HERO */
+.hero{
+  padding:200px 0 140px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent);
+  z-index:0;
+}
+.hero-inner{position:relative;z-index:1;text-align:center;}
+.hero h1{
+  font-family:var(--disp);
+  font-weight:700;
+  font-size:clamp(40px,6vw,76px);
+  letter-spacing:-0.02em;
+  line-height:1.05;
+  margin-top:24px;
+  background:linear-gradient(180deg,#ffffff 30%,#b9c4d8);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero h1 .grad{
+  background:linear-gradient(90deg,var(--cyan),var(--blue-glow));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero .th-headline{
+  font-family:var(--thai);font-weight:700;
+  font-size:clamp(20px,2.6vw,30px);
+  margin-top:18px;color:var(--text-hi);
+}
+.hero p.sub{
+  font-family:var(--thai);
+  color:var(--text-mid);
+  max-width:720px;
+  margin:24px auto 0;
+  font-size:16px;
+}
+.hero-actions{
+  display:flex;gap:14px;justify-content:center;margin-top:44px;flex-wrap:wrap;
+}
+.btn{
+  font-family:var(--mono);font-size:13.5px;
+  padding:13px 26px;border-radius:9px;
+  cursor:pointer;transition:all .2s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  color:#06090f;font-weight:600;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.1) inset, 0 8px 30px -8px rgba(59,130,246,0.6);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,255,255,0.15) inset,0 12px 34px -6px rgba(59,130,246,0.75);}
+.btn-ghost{
+  border:1px solid var(--line-strong);
+  background:rgba(255,255,255,0.02);
+  color:var(--text-hi);
+}
+.btn-ghost:hover{border-color:var(--cyan);background:rgba(54,214,232,0.06);}
+
+/* Hero visual: dataflow */
+.flow-panel{
+  margin:80px auto 0;
+  max-width:980px;
+  padding:34px;
+  position:relative;
+}
+.flow-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+.flow-col{display:flex;flex-direction:column;gap:8px;min-width:140px;}
+.flow-label{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-low);margin-bottom:4px;}
+.flow-chip{
+  font-family:var(--mono);font-size:12.5px;
+  padding:9px 12px;border-radius:7px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--line);
+  color:var(--text-mid);
+}
+.flow-arrow{
+  flex:1;min-width:50px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+  position:relative;
+  opacity:.6;
+}
+.flow-engine{
+  font-family:var(--disp);font-weight:700;font-size:20px;
+  padding:22px 30px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(54,214,232,0.14),rgba(59,130,246,0.14));
+  border:1px solid rgba(54,214,232,0.35);
+  text-align:center;
+  box-shadow:0 0 40px -10px rgba(54,214,232,0.4);
+}
+.flow-engine span{display:block;font-family:var(--mono);font-weight:400;font-size:11px;color:var(--cyan);margin-top:4px;letter-spacing:.1em;}
+
+/* METRICS */
+.metrics-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:16px;overflow:hidden;
+  margin-top:60px;
+}
+.metric-cell{
+  background:var(--navy-900);
+  padding:32px 18px;text-align:center;
+}
+.metric-num{
+  font-family:var(--disp);font-weight:700;font-size:clamp(26px,3vw,38px);
+  background:linear-gradient(135deg,#fff,var(--cyan));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.metric-label{font-family:var(--mono);font-size:11px;color:var(--text-low);margin-top:8px;letter-spacing:.04em;}
+
+/* ARCHITECTURE */
+.arch-diagram{
+  margin-top:64px;
+  display:flex;flex-direction:column;align-items:center;gap:0;
+}
+.arch-sources{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.arch-chip{
+  font-family:var(--mono);font-size:13px;padding:11px 18px;border-radius:8px;
+  border:1px solid var(--line-strong);background:rgba(255,255,255,0.03);color:var(--text-mid);
+}
+.arch-down{width:2px;height:46px;background:linear-gradient(var(--cyan),transparent);margin:6px auto;}
+.arch-engine{
+  font-family:var(--disp);font-weight:700;font-size:24px;
+  padding:24px 44px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(54,214,232,0.16),rgba(59,130,246,0.1));
+  border:1px solid rgba(54,214,232,0.4);
+  box-shadow:0 0 60px -12px rgba(54,214,232,0.45);
+  text-align:center;
+}
+.arch-outputs{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:46px;width:100%;
+}
+.arch-out{
+  padding:18px;border-radius:10px;text-align:center;font-size:13.5px;
+  border:1px solid var(--line);background:rgba(255,255,255,0.025);color:var(--text-mid);
+}
+
+/* CAPABILITIES */
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px;}
+.cap-card{
+  padding:32px;position:relative;overflow:hidden;
+  transition:transform .3s, border-color .3s;
+}
+.cap-card:hover{transform:translateY(-4px);border-color:rgba(54,214,232,0.35);}
+.cap-num{font-family:var(--mono);font-size:12px;color:var(--cyan);letter-spacing:.1em;}
+.cap-title{font-family:var(--disp);font-weight:700;font-size:21px;margin-top:14px;}
+.cap-title-th{font-family:var(--thai);color:var(--text-mid);font-size:14px;margin-top:6px;}
+.cap-features{margin-top:20px;display:flex;flex-direction:column;gap:9px;}
+.cap-features li{
+  list-style:none;font-size:13.5px;color:var(--text-mid);
+  display:flex;align-items:center;gap:9px;
+}
+.cap-features li::before{
+  content:'';width:5px;height:5px;border-radius:1px;
+  background:var(--cyan);flex-shrink:0;
+}
+
+/* COMMAND CENTER */
+.terminal{
+  background:#070b12;
+  border:1px solid var(--line-strong);
+  border-radius:14px;
+  margin-top:56px;
+  overflow:hidden;
+  box-shadow:0 30px 80px -30px rgba(0,0,0,0.7);
+}
+.term-bar{
+  display:flex;align-items:center;gap:8px;
+  padding:14px 18px;border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,0.02);
+}
+.term-dots{display:flex;gap:8px;}
+.term-dots .d{width:11px;height:11px;border-radius:50%;}
+.term-dots .d1{background:#ff5f57;}
+.term-dots .d2{background:#febc2e;}
+.term-dots .d3{background:#28c840;}
+.term-title{font-family:var(--mono);font-size:12px;color:var(--text-low);margin-left:8px;}
+.term-body{padding:28px;font-family:var(--mono);font-size:14px;line-height:2;}
+.term-line{color:var(--text-mid);}
+.term-prompt{color:var(--cyan);}
+.term-cmd{color:var(--text-hi);}
+.term-out{color:#7ee787;}
+.term-divider{height:1px;background:var(--line);margin:18px 0;}
+.cursor-blink{display:inline-block;width:8px;height:16px;background:var(--cyan);vertical-align:middle;animation:blink 1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+
+/* BEFORE/AFTER */
+.ba-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;margin-top:60px;}
+.ba-col{padding:38px;}
+.ba-col.before{border-radius:16px 0 0 16px;}
+.ba-col.after{border-radius:0 16px 16px 0;border-left:none;}
+.ba-mid{display:flex;align-items:center;justify-content:center;padding:0 22px;}
+.ba-arrow{
+  width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  color:#06090f;font-weight:700;
+  box-shadow:0 0 30px -6px rgba(54,214,232,0.6);
+}
+.ba-tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-low);}
+.ba-list{margin-top:20px;display:flex;flex-direction:column;gap:13px;}
+.ba-item{
+  font-size:14px;padding:13px 16px;border-radius:8px;
+  background:rgba(255,255,255,0.025);border:1px solid var(--line);
+  color:var(--text-mid);
+}
+.after .ba-item{border-color:rgba(54,214,232,0.25);color:var(--text-hi);}
+
+/* FRAMEWORK LAYERS */
+.layers{margin-top:56px;display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+.layer-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:24px 30px;background:var(--navy-900);
+  transition:background .2s;
+}
+.layer-row:hover{background:var(--navy-800);}
+.layer-left{display:flex;align-items:flex-start;gap:18px;}
+.layer-idx{font-family:var(--mono);font-size:12px;color:var(--cyan);width:24px;flex-shrink:0;padding-top:4px;}
+.layer-name{font-family:var(--disp);font-weight:600;font-size:17px;}
+.layer-meta{font-family:var(--mono);font-size:12.5px;color:var(--text-low);}
+
+/* INDUSTRY GRID */
+.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px;}
+.ind-chip{
+  padding:20px;border-radius:10px;text-align:center;
+  border:1px solid var(--line);background:rgba(255,255,255,0.02);
+  font-size:14px;color:var(--text-mid);
+  transition:all .2s;
+}
+.ind-chip:hover{border-color:rgba(54,214,232,0.4);color:var(--text-hi);background:rgba(54,214,232,0.05);}
+
+/* DASHBOARD SHOWCASE */
+.dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:60px;}
+.dash-card{padding:0;overflow:hidden;}
+.dash-mock{height:140px;position:relative;background:linear-gradient(160deg,#0c1322,#0a0f1a);padding:16px;}
+.dash-mock .bar{height:8px;border-radius:3px;background:rgba(54,214,232,0.3);margin-bottom:8px;}
+.dash-mock .bar:nth-child(2){width:70%;background:rgba(59,130,246,0.35);}
+.dash-mock .bar:nth-child(3){width:45%;background:rgba(54,214,232,0.2);}
+.dash-mock-bars{display:flex;align-items:flex-end;gap:5px;height:60px;margin-top:14px;}
+.dash-mock-bars div{flex:1;background:linear-gradient(180deg,var(--cyan),var(--blue));border-radius:2px 2px 0 0;opacity:.55;}
+.dash-label{padding:12px 14px;font-size:12.5px;color:var(--text-mid);border-top:1px solid var(--line);display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* FOUNDER */
+.founder{text-align:center;padding:100px 0;}
+.founder blockquote{
+  font-family:var(--disp);font-weight:700;
+  font-size:clamp(24px,3.4vw,38px);line-height:1.3;
+  max-width:780px;margin:0 auto;
+}
+.founder blockquote .dim{color:var(--text-low);}
+.founder .th-quote{
+  font-family:var(--thai);color:var(--text-mid);
+  margin-top:26px;font-size:16px;max-width:600px;margin-left:auto;margin-right:auto;
+}
+
+/* FOOTER */
+footer{padding:90px 0 50px;text-align:center;}
+.foot-neg{font-family:var(--mono);font-size:14px;color:var(--text-low);line-height:2.2;}
+.foot-pos{
+  font-family:var(--disp);font-weight:700;font-size:clamp(22px,3vw,32px);
+  margin-top:26px;
+}
+.foot-tag{margin-top:34px;font-family:var(--disp);font-weight:700;font-size:clamp(24px,3.4vw,36px);
+  background:linear-gradient(90deg,var(--cyan),var(--blue-glow));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.foot-tag-th{font-family:var(--thai);color:var(--text-mid);margin-top:10px;font-size:16px;}
+.foot-version{font-family:var(--mono);font-size:12px;color:var(--text-low);margin-top:40px;letter-spacing:.08em;}
+.foot-contact{
+  margin-top:18px;font-family:var(--mono);font-size:13px;color:var(--text-mid);
+  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+}
+.foot-contact a{transition:color .2s;}
+.foot-contact a:hover{color:var(--cyan);}
+.foot-sep{color:var(--text-low);}
+.line-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:20px;
+  border:1px solid var(--line-strong);
+  background:rgba(255,255,255,0.03);
+  color:var(--text-hi);
+  font-size:12.5px;
+}
+.line-btn:hover{border-color:var(--cyan);background:rgba(54,214,232,0.08);color:var(--cyan);}
+
+/* PROBLEM SECTION */
+.problem-flow{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;
+  margin-top:56px;
+}
+.problem-step{
+  font-family:var(--mono);font-size:13px;
+  padding:13px 18px;border-radius:9px;
+  border:1px solid var(--line);background:rgba(255,255,255,0.025);
+  color:var(--text-mid);
+}
+.problem-sep{color:var(--text-low);font-family:var(--mono);}
+.problem-time{
+  margin:36px auto 0;text-align:center;
+}
+.problem-time .num{
+  font-family:var(--disp);font-weight:700;font-size:clamp(34px,5vw,56px);
+  color:#ff8a65;
+}
+.problem-time .lbl{font-family:var(--mono);font-size:12px;color:var(--text-low);letter-spacing:.1em;margin-top:6px;}
+.problem-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:50px;}
+.problem-card{
+  padding:22px 18px;text-align:center;border-radius:12px;
+  border:1px solid rgba(255,138,101,0.2);
+  background:rgba(255,138,101,0.04);
+  font-size:13.5px;color:var(--text-mid);
+}
+.problem-statement{
+  margin-top:64px;text-align:center;
+  font-family:var(--disp);font-weight:600;font-size:clamp(20px,2.6vw,28px);
+  line-height:1.5;color:var(--text-hi);
+}
+.problem-statement .dim{color:var(--text-low);font-weight:400;}
+
+/* WALKTHROUGH */
+.walk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:60px;}
+.walk-card{padding:28px;position:relative;}
+.walk-step-num{
+  font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:.1em;
+  display:flex;align-items:center;gap:8px;
+}
+.walk-step-num::before{content:'';width:18px;height:1px;background:var(--cyan);}
+.walk-title{font-family:var(--disp);font-weight:700;font-size:17px;margin-top:14px;}
+.walk-body{margin-top:16px;display:flex;flex-direction:column;gap:8px;}
+.walk-chip{
+  font-family:var(--mono);font-size:12px;padding:8px 11px;border-radius:6px;
+  background:rgba(255,255,255,0.03);border:1px solid var(--line);color:var(--text-mid);
+}
+.walk-chip.hi{border-color:rgba(54,214,232,0.35);color:var(--cyan);}
+.walk-arrow-mob{display:none;}
+
+/* COMPARISON TABLE */
+.cmp-table{margin-top:56px;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+.cmp-row{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;}
+.cmp-row:not(:last-child){border-bottom:1px solid var(--line);}
+.cmp-row.head .cmp-cell{
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--text-low);
+  text-transform:uppercase;padding:16px 14px;
+}
+.cmp-row.head .cmp-cell.ubaos{color:var(--cyan);}
+.cmp-cell{
+  padding:16px 14px;font-size:13.5px;color:var(--text-mid);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  border-left:1px solid var(--line);
+}
+.cmp-cell:first-child{justify-content:flex-start;text-align:left;border-left:none;color:var(--text-hi);font-size:14px;}
+.cmp-row:nth-child(even){background:rgba(255,255,255,0.015);}
+.cmp-cell.ubaos{background:rgba(54,214,232,0.06);}
+.cmp-yes{color:var(--cyan);font-weight:700;}
+.cmp-no{color:var(--text-low);}
+
+/* FOUNDER CREDIBILITY */
+.cred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:50px;}
+.cred-chip{
+  padding:20px;border-radius:10px;text-align:center;
+  border:1px solid var(--line);background:rgba(255,255,255,0.02);
+  font-size:14px;color:var(--text-mid);
+}
+
+/* TODAY VS FUTURE */
+.tf-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:56px;}
+.tf-col{padding:32px;}
+.tf-label{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-low);}
+.tf-col.future .tf-label{color:var(--cyan);}
+.tf-flow{display:flex;flex-direction:column;gap:0;margin-top:20px;align-items:center;}
+.tf-node{
+  font-family:var(--disp);font-weight:600;font-size:15px;
+  padding:12px 24px;border-radius:8px;width:100%;text-align:center;
+  border:1px solid var(--line);background:rgba(255,255,255,0.025);color:var(--text-mid);
+}
+.tf-col.future .tf-node{border-color:rgba(54,214,232,0.25);}
+.tf-col.future .tf-node.hi{
+  border-color:rgba(54,214,232,0.5);
+  background:linear-gradient(135deg,rgba(54,214,232,0.12),rgba(59,130,246,0.06));
+  color:var(--cyan);
+}
+.tf-down{width:1px;height:22px;background:var(--line);}
+
+@media(max-width:980px){
+  .nav-links{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    position:absolute;
+    top:100%;left:0;right:0;
+    background:rgba(8,12,20,0.98);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    visibility:hidden;
+    transition:max-height .3s ease,opacity .25s ease;
+  }
+  .nav-links.open{
+    max-height:80vh;
+    opacity:1;
+    visibility:visible;
+  }
+  .nav-links a{padding:16px 32px;border-top:1px solid var(--line);}
+  .nav-links a:first-child{border-top:none;}
+  .nav-cta-mobile{display:inline-flex;margin:16px 32px 24px;justify-content:center;}
+  header .nav>.nav-cta{display:none;}
+  .nav-toggle{display:flex;}
+  .metrics-grid{grid-template-columns:repeat(3,1fr);}
+  .cap-grid{grid-template-columns:1fr 1fr;}
+  .arch-outputs{grid-template-columns:repeat(2,1fr);}
+  .ind-grid{grid-template-columns:repeat(2,1fr);}
+  .dash-grid{grid-template-columns:1fr 1fr;}
+  .dmock{height:auto;min-height:140px;}
+  .ba-grid{grid-template-columns:1fr;}
+  .ba-mid{padding:18px 0;}
+  .problem-cards{grid-template-columns:repeat(3,1fr);}
+  .walk-grid{grid-template-columns:1fr 1fr;}
+  .cmp-row{grid-template-columns:1.4fr repeat(4,1fr);}
+  .cmp-cell{font-size:12px;padding:12px 8px;}
+  .cred-grid{grid-template-columns:1fr 1fr;}
+  .tf-grid{grid-template-columns:1fr;gap:20px;}
+}
+@media(max-width:600px){
+  .metrics-grid{grid-template-columns:repeat(2,1fr);}
+  .cap-grid{grid-template-columns:1fr;}
+  .arch-outputs{grid-template-columns:1fr 1fr;}
+  .dash-grid{grid-template-columns:1fr;}
+  .dmock{height:auto;min-height:130px;}
+  .dmock-kpi-val{font-size:14px;}
+  .wrap{padding:0 20px;}
+  .layer-row{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+    padding:20px 22px;
+  }
+  .layer-left{gap:12px;}
+  .layer-name{font-size:16px;}
+  .layer-meta{padding-left:36px;}
+  .ind-grid{grid-template-columns:repeat(2,1fr);}
+  .problem-cards{grid-template-columns:1fr 1fr;}
+  .walk-grid{grid-template-columns:1fr;}
+  .cmp-row{grid-template-columns:1.2fr repeat(4,1fr);}
+  .cmp-cell{font-size:10.5px;padding:10px 5px;}
+  .cred-grid{grid-template-columns:1fr;}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;}
+}
+
+/* ── ICON SYSTEM ── */
+.nav-icon,.cap-icon,.cred-icon,.foot-icon,.cmp-icon{display:inline-block;vertical-align:middle;flex-shrink:0;}
+.nav-icon{width:15px;height:15px;margin-right:5px;opacity:.65;}
+.cap-icon{width:28px;height:28px;color:var(--cyan);margin-bottom:14px;}
+.cred-icon{width:22px;height:22px;color:var(--cyan);margin-right:10px;}
+.foot-icon{width:15px;height:15px;margin-right:5px;vertical-align:middle;}
+.cmp-icon{width:16px;height:16px;}
+.cmp-icon.yes{color:var(--cyan);}
+.cmp-icon.no{color:var(--text-low);}
+
+/* nav icon micro-bounce on hover */
+.nav-links a:hover .nav-icon{transform:translateY(-1px);opacity:1;transition:transform .18s,opacity .18s;}
+
+/* cap-icon micro-bounce */
+.cap-card:hover .cap-icon{transform:scale(1.12) translateY(-2px);transition:transform .22s;}
+
+/* ── PAGE-LOAD ORCHESTRATED ENTRANCE ── */
+.js-ready header{opacity:0;transform:translateY(-6px);transition:opacity .45s ease,transform .45s ease;}
+.js-ready header.loaded{opacity:1;transform:none;}
+
+.boot-1,.boot-2,.boot-3,.boot-4{opacity:0;transform:translateY(14px);}
+.js-ready .boot-1{transition:opacity .5s .12s ease,transform .5s .12s ease;}
+.js-ready .boot-2{transition:opacity .5s .25s ease,transform .5s .25s ease;}
+.js-ready .boot-3{transition:opacity .5s .38s ease,transform .5s .38s ease;}
+.js-ready .boot-4{transition:opacity .5s .52s ease,transform .5s .52s ease;}
+.js-ready .boot-1.loaded,.js-ready .boot-2.loaded,.js-ready .boot-3.loaded,.js-ready .boot-4.loaded{opacity:1;transform:none;}
+
+/* ── INTERACTIVE ARCH DIAGRAM ── */
+[data-tip]{position:relative;cursor:pointer;}
+[data-tip]::after{
+  content:attr(data-tip);
+  position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) scale(.92);
+  background:var(--graphite-700);border:1px solid var(--line-strong);
+  color:var(--text-hi);font-family:var(--mono);font-size:11px;
+  padding:7px 12px;border-radius:7px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;
+  box-shadow:0 4px 20px rgba(0,0,0,.5);z-index:10;
+}
+[data-tip]:hover::after{opacity:1;transform:translateX(-50%) scale(1);}
+.arch-engine.pulse{
+  box-shadow:0 0 0 0 rgba(54,214,232,.5);
+  animation:enginePulse .6s ease-out forwards;
+}
+@keyframes enginePulse{
+  0%{box-shadow:0 0 0 0 rgba(54,214,232,.45);}
+  100%{box-shadow:0 0 0 18px rgba(54,214,232,0);}
+}
+
+/* ── REALISTIC DASHBOARD MOCKUPS ── */
+.dash-card{padding:0;overflow:hidden;cursor:pointer;transition:transform .22s,box-shadow .22s;}
+.dash-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4),0 0 0 1px rgba(54,214,232,.2);}
+.dmock{
+  height:auto;min-height:160px;position:relative;
+  background:linear-gradient(160deg,#0b1120,#080d18);
+  padding:12px;overflow:visible;font-family:var(--mono);
+}
+.dmock-hdr{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:8px;
+}
+.dmock-hdr-dots{display:flex;gap:4px;}
+.dmock-hdr-dots span{width:6px;height:6px;border-radius:50%;}
+.dmock-hdr-dots span:nth-child(1){background:#ff5f57;}
+.dmock-hdr-dots span:nth-child(2){background:#febc2e;}
+.dmock-hdr-dots span:nth-child(3){background:#28c840;}
+.dmock-hdr-title{font-size:8px;color:var(--text-low);letter-spacing:.05em;text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - 36px);}
+.dmock-kpis{display:flex;gap:5px;margin-bottom:8px;overflow:hidden;}
+.dmock-kpi{
+  flex:1;min-width:0;padding:5px 6px;border-radius:4px;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,.06);
+  overflow:hidden;
+}
+.dmock-kpi-val{font-size:13px;font-weight:700;color:var(--text-hi);letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.dmock-kpi-lbl{font-size:7.5px;color:var(--text-low);margin-top:1px;text-transform:uppercase;letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.dmock-kpi-trend{font-size:8px;margin-top:2px;white-space:nowrap;}
+.dmock-kpi-trend.up{color:#4ade80;}
+.dmock-kpi-trend.down{color:#f87171;}
+.dmock-chart{display:flex;align-items:flex-end;gap:3px;height:42px;}
+.dmock-chart-bar{border-radius:2px 2px 0 0;min-width:4px;flex:1;}
+.dmock-chart-line{
+  position:absolute;bottom:0;left:0;right:0;height:50px;
+  overflow:hidden;
+}
+.dmock-chart-line svg{width:100%;height:100%;}
+.dmock-donut{
+  width:52px;height:52px;flex-shrink:0;
+}
+.dmock-donut svg{width:100%;height:100%;}
+.dmock-rows{display:flex;flex-direction:column;gap:3px;margin-top:2px;}
+.dmock-row-item{
+  display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:5px;
+  font-size:8px;color:var(--text-low);
+}
+.dmock-row-bar-track{height:4px;border-radius:2px;background:rgba(255,255,255,.06);position:relative;overflow:hidden;}
+.dmock-row-bar{height:100%;border-radius:2px;position:absolute;left:0;top:0;}
+.dmock-badge{
+  display:inline-block;padding:1px 5px;border-radius:3px;
+  font-size:7.5px;font-weight:600;letter-spacing:.03em;white-space:nowrap;
+}
+.dmock-badge.high{background:rgba(248,113,113,.15);color:#f87171;border:1px solid rgba(248,113,113,.3);}
+.dmock-badge.med{background:rgba(251,191,36,.12);color:#fbbf24;border:1px solid rgba(251,191,36,.25);}
+.dmock-badge.ok{background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.25);}
+
+/* ── AI COMMAND CENTER WIDGET (Vision section) ── */
+.tf-ai-strip{
+  margin-top:18px;border:1px solid rgba(54,214,232,.25);border-radius:10px;
+  background:rgba(54,214,232,.04);overflow:hidden;
+}
+.tf-ai-header{
+  display:flex;align-items:center;gap:8px;padding:10px 14px;
+  border-bottom:1px solid rgba(54,214,232,.12);
+}
+.tf-ai-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--cyan);
+  box-shadow:0 0 6px var(--cyan);
+  animation:livePulse 1.4s ease-in-out infinite;
+}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.85);}}
+.tf-ai-status{font-family:var(--mono);font-size:10px;color:var(--cyan);letter-spacing:.08em;}
+.tf-ai-lines{padding:10px 14px;display:flex;flex-direction:column;gap:5px;}
+.tf-ai-line{font-family:var(--mono);font-size:9.5px;color:var(--text-low);display:flex;gap:8px;align-items:flex-start;}
+.tf-ai-line .prompt{color:rgba(54,214,232,.6);}
+.tf-ai-line .out{color:var(--text-mid);}
+.tf-ai-scan{
+  height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+  animation:scanLine 2.2s linear infinite;
+}
+@keyframes scanLine{0%{transform:translateX(-100%);}100%{transform:translateX(100vw);}}
+
+</style>
+</head>
+<body>
+<noscript>
+  <style>
+    .reveal{opacity:1!important;transform:none!important;}
+    .nav-links{display:flex!important;position:static!important;max-height:none!important;opacity:1!important;visibility:visible!important;background:transparent!important;flex-direction:row!important;}
+    .nav-toggle{display:none!important;}
+    .metric-num{font-size:clamp(26px,3vw,38px);}
+  </style>
+</noscript>
+
+<svg style="display:none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-arch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="icon-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 4.5-9 4.5-9-4.5L12 2z"/><path d="M3 10.5v6L12 21l9-4.5v-6"/></symbol>
+  <symbol id="icon-cmd" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></symbol>
+  <symbol id="icon-industry" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l6-5 6 5v11M3 21h18"/><rect x="9" y="14" width="3" height="7"/><rect x="13" y="14" width="3" height="7"/></symbol>
+  <symbol id="icon-output" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
+  <symbol id="icon-diff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></symbol>
+  <symbol id="icon-exec" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></symbol>
+  <symbol id="icon-prod" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l4-4 4 4V4l4 4v12"/></symbol>
+  <symbol id="icon-inv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="icon-cost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></symbol>
+  <symbol id="icon-fcast" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+  <symbol id="icon-next" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></symbol>
+  <symbol id="icon-yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="icon-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="icon-mfg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></symbol>
+  <symbol id="icon-pbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 17V13M12 17V9M16 17V11"/></symbol>
+  <symbol id="icon-sap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h7"/><circle cx="19" cy="17" r="3"/></symbol>
+  <symbol id="icon-bi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></symbol>
+  <symbol id="icon-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></symbol>
+  <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+</svg>
+
+<header>
+  <nav>
+    <div class="logo"><div class="mark"></div>MD-UBAOS™</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#architecture"><svg class="nav-icon"><use href="#icon-arch"/></svg>Architecture</a>
+      <a href="#capabilities"><svg class="nav-icon"><use href="#icon-cap"/></svg>Capabilities</a>
+      <a href="#command"><svg class="nav-icon"><use href="#icon-cmd"/></svg>Command Center</a>
+      <a href="#framework"><svg class="nav-icon"><use href="#icon-output"/></svg>Framework</a>
+      <a href="#industries"><svg class="nav-icon"><use href="#icon-industry"/></svg>Industries</a>
+      <a href="#command" class="nav-cta nav-cta-mobile">v3.4 — Live Spec</a>
+    </div>
+    <a href="#command" class="nav-cta">v3.4 — Live Spec</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow boot-1">AI BUSINESS OPERATING SYSTEM™</div>
+    <h1 class="boot-2">Transform Data Into <span class="grad">Decisions™</span></h1>
+    <div class="th-headline th boot-3" lang="th">เปลี่ยนข้อมูลให้เป็นการตัดสินใจทางธุรกิจ</div>
+    <p class="sub th boot-3" lang="th">เปลี่ยนข้อมูลจาก SAP, Excel, Power BI, ERP และ MES ให้เป็น Insight, Forecast และ Executive Decision ภายในไม่กี่นาที</p>
+    <div class="hero-actions boot-4">
+      <a href="#output-gallery" class="btn btn-primary">ดู Output จริง →</a>
+      <a href="#capabilities" class="btn btn-ghost">View Capabilities</a>
+    </div>
+
+    <div class="flow-panel glass reveal">
+      <div class="flow-row">
+        <div class="flow-col">
+          <div class="flow-label">Data Sources</div>
+          <div class="flow-chip">SAP</div>
+          <div class="flow-chip">Excel</div>
+          <div class="flow-chip">Power BI / ERP / MES</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-engine">MD-UBAOS™<span>ENGINE</span></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-col">
+          <div class="flow-label">Output</div>
+          <div class="flow-chip">Executive Decisions</div>
+          <div class="flow-chip">Forecasts</div>
+          <div class="flow-chip">Action Plans</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="metrics-grid reveal">
+      <div class="metric-cell"><div class="metric-num" data-target="500">500+</div><div class="metric-label">SKILLS</div></div>
+      <div class="metric-cell"><div class="metric-num" data-target="250">250+</div><div class="metric-label">COMMANDS</div></div>
+      <div class="metric-cell"><div class="metric-num" data-target="1250">1,250+</div><div class="metric-label">USE CASES</div></div>
+      <div class="metric-cell"><div class="metric-num" data-target="30">30+</div><div class="metric-label">PLAYBOOKS</div></div>
+      <div class="metric-cell"><div class="metric-num" data-target="500">500+</div><div class="metric-label">KPI TEMPLATES</div></div>
+      <div class="metric-cell"><div class="metric-num" data-target="300">300+</div><div class="metric-label">RISK TEMPLATES</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="text-align:center;">
+    <div class="eyebrow reveal" style="justify-content:center;">THE PROBLEM</div>
+    <h2 class="section-title reveal">Why Traditional Business Analysis Is Slow</h2>
+    <div class="section-sub th reveal" lang="th" style="margin:14px auto 0;">ทำไมการวิเคราะห์ธุรกิจแบบเดิมจึงใช้เวลานาน</div>
+
+    <div class="problem-flow reveal">
+      <div class="problem-step">Export SAP</div>
+      <div class="problem-sep">→</div>
+      <div class="problem-step">Export Excel</div>
+      <div class="problem-sep">→</div>
+      <div class="problem-step">Build PowerPoint</div>
+      <div class="problem-sep">→</div>
+      <div class="problem-step">Analyze KPI</div>
+      <div class="problem-sep">→</div>
+      <div class="problem-step">Management Review</div>
+      <div class="problem-sep">→</div>
+      <div class="problem-step">Action Plan</div>
+    </div>
+
+    <div class="problem-time reveal">
+      <div class="num">3–5 Days</div>
+      <div class="lbl">TIME REQUIRED, PER ANALYSIS CYCLE</div>
+    </div>
+
+    <div class="problem-cards reveal">
+      <div class="problem-card">Manual Work</div>
+      <div class="problem-card">Fragmented Data</div>
+      <div class="problem-card">Delayed Decisions</div>
+      <div class="problem-card">Reactive Management</div>
+      <div class="problem-card">High Analysis Cost</div>
+    </div>
+
+    <div class="problem-statement reveal">
+      Organizations have data.<br>
+      <span class="dim">But they struggle to turn data into decisions.</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="architecture">
+  <div class="wrap">
+    <div class="eyebrow reveal">SYSTEM ARCHITECTURE</div>
+    <h2 class="section-title reveal">From Enterprise Data To<br>Executive Decisions</h2>
+    <div class="section-sub th reveal" lang="th">หนึ่ง Framework หนึ่ง Engine ทุกอุตสาหกรรม</div>
+
+    <div class="arch-diagram reveal">
+      <div class="arch-sources">
+        <div class="arch-chip" data-tip="Inventory & Stock Levels">SAP MB52</div>
+        <div class="arch-chip" data-tip="Goods Movement & Transactions">SAP MIGO</div>
+        <div class="arch-chip" data-tip="Production Orders & OEE">SAP COOIS</div>
+        <div class="arch-chip" data-tip="Operational Reports">Excel</div>
+        <div class="arch-chip" data-tip="BI Dashboards">Power BI</div>
+        <div class="arch-chip" data-tip="Enterprise Resource Planning">ERP</div>
+      </div>
+      <div class="arch-down"></div>
+      <div class="arch-engine" id="archEngine">MD-UBAOS™</div>
+      <div class="arch-down"></div>
+      <div class="arch-outputs">
+        <div class="arch-out" data-tip="Board-level KPI briefings">Executive Review</div>
+        <div class="arch-out" data-tip="OEE, downtime & bottleneck analysis">Production Improvement</div>
+        <div class="arch-out" data-tip="Excess, slow-moving & dead stock">Inventory Optimization</div>
+        <div class="arch-out" data-tip="Material, production & logistics cost">Cost Reduction</div>
+        <div class="arch-out" data-tip="AI-driven demand & capacity forecast">Demand Forecasting</div>
+      </div>
+      <div class="arch-down"></div>
+      <div class="arch-engine" style="font-size:18px;padding:18px 36px;">Executive Actions</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="capabilities">
+  <div class="wrap">
+    <div class="eyebrow reveal">CORE CAPABILITIES</div>
+    <h2 class="section-title reveal">Five engines. One operating layer.</h2>
+    <div class="section-sub reveal">Each capability runs on the same Skill, Command, and Use Case architecture — purpose-built for a different layer of the business.</div>
+
+    <div class="cap-grid">
+      <div class="cap-card glass reveal">
+        <svg class="cap-icon"><use href="#icon-exec"/></svg>
+        <div class="cap-num">01 / EXECUTIVE</div>
+        <h3 class="cap-title">Executive Review™</h3>
+        <div class="cap-title-th th" lang="th">วิเคราะห์ภาพรวมธุรกิจระดับผู้บริหาร</div>
+        <ul class="cap-features">
+          <li>Business Health Score</li>
+          <li>Executive KPI Analysis</li>
+          <li>Strategic Insights</li>
+          <li>Risk Assessment</li>
+          <li>Executive Recommendations</li>
+        </ul>
+      </div>
+      <div class="cap-card glass reveal">
+        <svg class="cap-icon"><use href="#icon-prod"/></svg>
+        <div class="cap-num">02 / PRODUCTION</div>
+        <h3 class="cap-title">Production Improvement™</h3>
+        <div class="cap-title-th th" lang="th">วิเคราะห์และเพิ่มประสิทธิภาพการผลิต</div>
+        <ul class="cap-features">
+          <li>OEE Analysis</li>
+          <li>Downtime Analysis</li>
+          <li>Bottleneck Detection</li>
+          <li>Capacity Analysis</li>
+          <li>Yield Improvement</li>
+        </ul>
+      </div>
+      <div class="cap-card glass reveal">
+        <svg class="cap-icon"><use href="#icon-inv"/></svg>
+        <div class="cap-num">03 / INVENTORY</div>
+        <h3 class="cap-title">Inventory Optimization™</h3>
+        <div class="cap-title-th th" lang="th">เพิ่มประสิทธิภาพสินค้าคงคลัง</div>
+        <ul class="cap-features">
+          <li>Excess Stock</li>
+          <li>Slow Moving</li>
+          <li>Dead Stock</li>
+          <li>Inventory Turnover</li>
+          <li>Material Availability</li>
+        </ul>
+      </div>
+      <div class="cap-card glass reveal">
+        <svg class="cap-icon"><use href="#icon-cost"/></svg>
+        <div class="cap-num">04 / COST</div>
+        <h3 class="cap-title">Cost Reduction™</h3>
+        <div class="cap-title-th th" lang="th">ค้นหาโอกาสลดต้นทุน</div>
+        <ul class="cap-features">
+          <li>Material Cost</li>
+          <li>Production Cost</li>
+          <li>Procurement Cost</li>
+          <li>Logistics Cost</li>
+          <li>Saving Opportunities</li>
+        </ul>
+      </div>
+      <div class="cap-card glass reveal">
+        <svg class="cap-icon"><use href="#icon-fcast"/></svg>
+        <div class="cap-num">05 / FORECAST</div>
+        <h3 class="cap-title">Demand Forecasting™</h3>
+        <div class="cap-title-th th" lang="th">วางแผนล่วงหน้าด้วย AI</div>
+        <ul class="cap-features">
+          <li>Forecast Models</li>
+          <li>Scenario Analysis</li>
+          <li>Capacity Planning</li>
+          <li>Inventory Planning</li>
+          <li>Risk Forecasting</li>
+        </ul>
+      </div>
+      <div class="cap-card glass reveal" style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;">
+        <svg class="cap-icon"><use href="#icon-next"/></svg>
+        <div class="cap-num">06 / NEXT</div>
+        <h3 class="cap-title">More Engines, Same Core</h3>
+        <div class="cap-title-th" style="margin-top:6px;">Built on the same Skill + Command architecture</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="command">
+  <div class="wrap">
+    <div class="eyebrow reveal">AI COMMAND CENTER™</div>
+    <h2 class="section-title reveal">AI Command Center™</h2>
+    <div class="section-sub th reveal" lang="th">สั่งงานด้วยภาษาธุรกิจ ไม่ต้องเขียน Prompt</div>
+
+    <div class="terminal reveal">
+      <div class="term-bar">
+        <div class="term-dots"><div class="d d1"></div><div class="d d2"></div><div class="d d3"></div></div>
+        <div class="term-title">md-ubaos — command center</div>
+      </div>
+      <div class="term-body">
+        <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">Run MD-UBAOS™</span></div>
+        <div class="term-line">Execute: <span class="term-out">Executive Review</span></div>
+        <div class="term-line">Generate: <span class="term-out">Solution.Analysis</span></div>
+        <div class="term-divider"></div>
+        <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">Run MD-UBAOS™</span></div>
+        <div class="term-line">Execute: <span class="term-out">Production Improvement</span></div>
+        <div class="term-line">Generate: <span class="term-out">Solution.Presentation</span></div>
+        <div class="term-divider"></div>
+        <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">Run MD-UBAOS™</span></div>
+        <div class="term-line">Execute: <span class="term-out">Inventory Optimization</span></div>
+        <div class="term-line">Generate: <span class="term-out">Solution.Dashboard</span></div>
+        <div class="term-divider"></div>
+        <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">Run MD-UBAOS™</span></div>
+        <div class="term-line">Execute: <span class="term-out">Demand Forecasting</span></div>
+        <div class="term-line">Generate: <span class="term-out">Solution.Report</span></div>
+        <div class="term-divider"></div>
+        <div class="term-line"><span class="term-prompt">$</span> <span class="cursor-blink"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow reveal">WALKTHROUGH</div>
+    <h2 class="section-title reveal">See MD-UBAOS™ In Action</h2>
+    <div class="section-sub reveal">One command, four stages, zero spreadsheets — from raw export to executive output.</div>
+
+    <div class="walk-grid">
+      <div class="walk-card glass reveal">
+        <div class="walk-step-num">STEP 01</div>
+        <div class="walk-title">Upload Data</div>
+        <div class="walk-body">
+          <div class="walk-chip">SAP MB52</div>
+          <div class="walk-chip">148,321 Rows</div>
+        </div>
+      </div>
+      <div class="walk-card glass reveal">
+        <div class="walk-step-num">STEP 02</div>
+        <div class="walk-title">Run Command</div>
+        <div class="walk-body">
+          <div class="walk-chip hi">Run MD-UBAOS™</div>
+          <div class="walk-chip">Execute: Inventory Optimization</div>
+        </div>
+      </div>
+      <div class="walk-card glass reveal">
+        <div class="walk-step-num">STEP 03</div>
+        <div class="walk-title">AI Analysis</div>
+        <div class="walk-body">
+          <div class="walk-chip">Detect Excess Stock</div>
+          <div class="walk-chip">Detect Slow Moving</div>
+          <div class="walk-chip">Detect Dead Stock</div>
+        </div>
+      </div>
+      <div class="walk-card glass reveal">
+        <div class="walk-step-num">STEP 04</div>
+        <div class="walk-title">Executive Output</div>
+        <div class="walk-body">
+          <div class="walk-chip hi">Inventory Health Score</div>
+          <div class="walk-chip">Risk Assessment</div>
+          <div class="walk-chip">Recommended Actions</div>
+          <div class="walk-chip">Potential Savings</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow reveal">TRANSFORMATION</div>
+    <h2 class="section-title reveal">From Raw Data To Executive Decisions</h2>
+    <div class="section-sub th reveal" lang="th">จากข้อมูลดิบสู่การตัดสินใจระดับผู้บริหาร</div>
+
+    <div class="ba-grid reveal">
+      <div class="ba-col before glass">
+        <div class="ba-tag">Before</div>
+        <div class="ba-list">
+          <div class="ba-item">Raw SAP Data</div>
+          <div class="ba-item">Manual Analysis</div>
+          <div class="ba-item">Multiple Excel Files</div>
+          <div class="ba-item">PowerPoint Creation</div>
+          <div class="ba-item" style="border-color:rgba(255,138,101,0.3);color:#ff8a65;">Several Days</div>
+        </div>
+      </div>
+      <div class="ba-mid"><div class="ba-arrow">→</div></div>
+      <div class="ba-col after glass">
+        <div class="ba-tag">After — MD-UBAOS™</div>
+        <div class="ba-list">
+          <div class="ba-item">Executive Dashboard</div>
+          <div class="ba-item">Recommendations</div>
+          <div class="ba-item">Forecast</div>
+          <div class="ba-item">PowerPoint — Executive Report</div>
+          <div class="ba-item" style="border-color:rgba(54,214,232,0.5);color:var(--cyan);font-weight:600;">Minutes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="framework">
+  <div class="wrap">
+    <div class="eyebrow reveal">SYSTEM STACK</div>
+    <h2 class="section-title reveal">Inside MD-UBAOS™</h2>
+    <div class="section-sub reveal">Six layers, compounding from raw engine to industry-specific playbooks.</div>
+
+    <div class="layers reveal">
+      <div class="layer-row">
+        <div class="layer-left"><span class="layer-idx">01</span><span class="layer-name">AI Business Operating System™</span></div>
+        <span class="layer-meta">Core Runtime</span>
+      </div>
+      <div class="layer-row">
+        <div class="layer-left"><span class="layer-idx">02</span><span class="layer-name">SKILL.md™</span></div>
+        <span class="layer-meta">500+ Business Skills</span>
+      </div>
+      <div class="layer-row">
+        <div class="layer-left"><span class="layer-idx">03</span><span class="layer-name">Command Library™</span></div>
+        <span class="layer-meta">250+ Commands</span>
+      </div>
+      <div class="layer-row">
+        <div class="layer-left"><span class="layer-idx">04</span><span class="layer-name">Use Case Catalog™</span></div>
+        <span class="layer-meta">1,250+ Use Cases</span>
+      </div>
+      <div class="layer-row">
+        <div class="layer-left"><span class="layer-idx">05</span><span class="layer-name">Industry Playbooks™</span></div>
+        <span class="layer-meta">30+ Industries</span>
+      </div>
+      <div class="layer-row">
+        <div class="layer-left"><span class="layer-idx">06</span><span class="layer-name">KPI & Risk Libraries™</span></div>
+        <span class="layer-meta">Enterprise Standards</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="industries">
+  <div class="wrap">
+    <div class="eyebrow reveal">COVERAGE</div>
+    <h2 class="section-title reveal">Built For Every Industry</h2>
+    <div class="section-sub th reveal" lang="th">ออกแบบมาสำหรับทุกอุตสาหกรรม</div>
+
+    <div class="ind-grid reveal">
+      <div class="ind-chip">Manufacturing</div>
+      <div class="ind-chip">Automotive</div>
+      <div class="ind-chip">Electronics</div>
+      <div class="ind-chip">Food & Beverage</div>
+      <div class="ind-chip">Chemical</div>
+      <div class="ind-chip">Pharmaceutical</div>
+      <div class="ind-chip">Retail</div>
+      <div class="ind-chip">Healthcare</div>
+      <div class="ind-chip">Banking</div>
+      <div class="ind-chip">Insurance</div>
+      <div class="ind-chip">Energy</div>
+      <div class="ind-chip">Construction</div>
+      <div class="ind-chip">Logistics</div>
+      <div class="ind-chip">Agriculture</div>
+      <div class="ind-chip">Hospitality</div>
+      <div class="ind-chip">And More</div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── OUTPUT GALLERY v2 ── */
+.og-section { padding: 80px 0; }
+.og-tabs { display:flex; gap:8px; flex-wrap:nowrap; margin:32px 0 28px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; scrollbar-width:none; }
+.og-tabs::-webkit-scrollbar { display:none; }
+.og-tab {
+  font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase;
+  padding:6px 14px; border-radius:20px; border:1px solid var(--line);
+  color:var(--text-low); cursor:pointer; transition:all .2s; background:transparent;
+  white-space:nowrap; flex-shrink:0;
+}
+.og-tab.active, .og-tab:hover {
+  border-color:var(--cyan); color:var(--cyan); background:rgba(54,214,232,.08);
+}
+
+/* advisor badge strip */
+.adv-badge {
+  display:inline-flex; align-items:center; gap:5px;
+  font-family:var(--mono); font-size:8.5px; letter-spacing:.04em; text-transform:uppercase;
+  padding:3px 8px 3px 6px; border-radius:3px;
+  background:rgba(54,214,232,.1); border:1px solid rgba(54,214,232,.25); color:var(--cyan);
+}
+.adv-dot { width:5px; height:5px; border-radius:50%; background:var(--cyan); animation:pulse-dot 2s infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* terminal command line */
+.cmd-line {
+  font-family:var(--mono); font-size:10px; color:var(--text-mid);
+  background:rgba(0,0,0,.3); border:1px solid var(--line);
+  border-radius:4px; padding:6px 10px; margin-bottom:12px;
+  display:flex; align-items:center; gap:8px;
+}
+.cmd-prompt { color:var(--cyan); }
+.cmd-text { color:#e2e8f0; }
+
+/* output card grid */
+.og-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:14px;
+}
+@media(max-width:640px){ .og-grid{ grid-template-columns:1fr; } }
+.og-card {
+  background:linear-gradient(160deg,rgba(15,22,38,.9),rgba(8,13,24,.95));
+  border:1px solid var(--line); border-radius:10px; overflow:hidden;
+}
+.og-card-hdr {
+  padding:10px 14px; border-bottom:1px solid var(--line);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.og-card-title { font-family:var(--mono); font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-low); }
+.og-card-body { padding:14px; }
+
+/* KPI grid inside card */
+.kpi-row { display:flex; gap:8px; margin-bottom:12px; }
+.kpi-cell {
+  flex:1; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06);
+  border-radius:6px; padding:8px 10px;
+}
+.kpi-v { font-family:var(--disp); font-size:15px; font-weight:700; color:var(--text-hi); letter-spacing:-.02em; }
+.kpi-l { font-family:var(--mono); font-size:7px; color:var(--text-low); margin-top:1px; text-transform:uppercase; letter-spacing:.05em; }
+.kpi-t { font-size:8px; margin-top:3px; }
+.kpi-t.up { color:#4ade80; } .kpi-t.dn { color:#f87171; } .kpi-t.warn { color:#fbbf24; }
+.kpi-cell.ok { border-color:rgba(74,222,128,.2); background:rgba(74,222,128,.04); }
+.kpi-cell.warn { border-color:rgba(251,191,36,.2); background:rgba(251,191,36,.04); }
+.kpi-cell.crit { border-color:rgba(248,113,113,.2); background:rgba(248,113,113,.04); }
+
+/* bar chart */
+.bc { display:flex; align-items:flex-end; gap:4px; height:52px; }
+.bc-bar { flex:1; border-radius:2px 2px 0 0; }
+.bc-label-row { display:flex; gap:4px; margin-top:3px; }
+.bc-label { flex:1; font-family:var(--mono); font-size:6.5px; color:var(--text-low); text-align:center; }
+
+/* horizontal progress bar */
+.hbar-row { display:flex; align-items:center; gap:8px; margin-bottom:5px; }
+.hbar-label { font-family:var(--mono); font-size:8px; color:var(--text-mid); width:72px; flex-shrink:0; }
+.hbar-track { flex:1; height:6px; border-radius:3px; background:rgba(255,255,255,.06); overflow:hidden; }
+.hbar-fill { height:100%; border-radius:3px; }
+.hbar-val { font-family:var(--mono); font-size:8px; font-weight:600; width:28px; text-align:right; }
+
+/* risk matrix mini */
+.risk-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:4px; }
+.risk-cell {
+  padding:7px 9px; border-radius:5px; border:1px solid;
+  font-family:var(--mono); font-size:8px;
+}
+.risk-cell.r-crit { background:rgba(248,113,113,.08); border-color:rgba(248,113,113,.25); color:#f87171; }
+.risk-cell.r-high { background:rgba(251,191,36,.07); border-color:rgba(251,191,36,.2); color:#fbbf24; }
+.risk-cell.r-med { background:rgba(54,214,232,.06); border-color:rgba(54,214,232,.18); color:var(--cyan); }
+.risk-cell.r-ok { background:rgba(74,222,128,.06); border-color:rgba(74,222,128,.18); color:#4ade80; }
+.risk-n { font-size:14px; font-weight:700; font-family:var(--disp); }
+
+/* action item list */
+.action-list { display:flex; flex-direction:column; gap:5px; }
+.action-item {
+  display:flex; align-items:flex-start; gap:7px;
+  padding:6px 9px; border-radius:5px;
+  background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05);
+  font-family:var(--mono); font-size:8.5px;
+}
+.action-num { color:var(--cyan); font-weight:600; flex-shrink:0; min-width:14px; }
+.action-txt { color:var(--text-mid); line-height:1.4; }
+.action-pri { margin-left:auto; flex-shrink:0; }
+
+/* slide deck mock */
+.slide-deck { position:relative; }
+.slide-frame {
+  background:linear-gradient(135deg,rgba(15,22,38,1),rgba(10,15,26,1));
+  border:1px solid rgba(54,214,232,.2); border-radius:6px; padding:12px 14px;
+  margin-bottom:8px;
+}
+.slide-eyebrow { font-family:var(--mono); font-size:7px; color:var(--cyan); letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px; }
+.slide-title { font-family:var(--disp); font-size:12px; font-weight:700; color:var(--text-hi); margin-bottom:8px; }
+.slide-progress { display:flex; gap:3px; }
+.slide-pip { flex:1; height:3px; border-radius:2px; }
+
+/* forecast line pseudo */
+.forecast-area {
+  position:relative; height:52px; margin-top:4px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  border-left:1px solid rgba(255,255,255,.08);
+}
+.fc-actual { position:absolute; bottom:0; left:0; right:40%; height:100%;
+  background:linear-gradient(180deg,rgba(54,214,232,.0) 0%,rgba(54,214,232,.15) 100%); }
+.fc-forecast { position:absolute; bottom:0; right:0; left:60%; height:80%;
+  background:linear-gradient(180deg,rgba(59,130,246,.0) 0%,rgba(59,130,246,.12) 100%);
+  border-top:1px dashed rgba(59,130,246,.5); }
+.fc-line {
+  position:absolute; bottom:0; left:0; right:0; height:2px; overflow:visible;
+}
+
+/* section tab panels */
+.og-panel { display:none; }
+.og-panel.active { display:block; }
+
+/* wide card (full width) */
+.og-card.full { grid-column:1/-1; }
+</style>
+
+<section class="section og-section">
+  <div class="wrap">
+    <div class="eyebrow reveal">OUTPUT GALLERY</div>
+    <h2 class="section-title reveal">What MD-UBAOS™ Actually Outputs</h2>
+    <div class="section-sub reveal">เลือก Advisor แล้วดู output จริงที่ได้ — KPI Analysis, Risk Assessment, Root Cause, Forecast, Action Plan ครบในคำสั่งเดียว</div>
+
+    <!-- Advisor tabs -->
+    <div class="og-tabs reveal" id="ogTabs">
+      <button class="og-tab active" data-panel="exec">Executive Advisor™</button>
+      <button class="og-tab" data-panel="prod">Production Advisor™</button>
+      <button class="og-tab" data-panel="inv">Inventory Advisor™</button>
+      <button class="og-tab" data-panel="fin">Finance Advisor™</button>
+      <button class="og-tab" data-panel="board">Board Presentation</button>
+    </div>
+
+    <!-- ── PANEL 1: Executive Advisor ── -->
+    <div class="og-panel active" id="panel-exec">
+      <div class="cmd-line"><span class="cmd-prompt">▶</span><span class="cmd-text">Activate Executive Advisor™ &nbsp;→&nbsp; Run Executive Review</span></div>
+      <div class="og-grid">
+
+        <!-- KPI Summary -->
+        <div class="og-card">
+          <div class="og-card-hdr">
+            <span class="og-card-title">Business Health · KPI Summary</span>
+            <span class="adv-badge"><span class="adv-dot"></span>Executive Advisor™</span>
+          </div>
+          <div class="og-card-body">
+            <div class="kpi-row">
+              <div class="kpi-cell ok">
+                <div class="kpi-v">94</div>
+                <div class="kpi-l">Health Score</div>
+                <div class="kpi-t up">▲ +6 vs Q2</div>
+              </div>
+              <div class="kpi-cell ok">
+                <div class="kpi-v">฿18.4M</div>
+                <div class="kpi-l">Revenue</div>
+                <div class="kpi-t up">▲ 12.3%</div>
+              </div>
+              <div class="kpi-cell warn">
+                <div class="kpi-v">฿3.2M</div>
+                <div class="kpi-l">Excess Inv</div>
+                <div class="kpi-t warn">⚠ HIGH</div>
+              </div>
+            </div>
+            <!-- trend bars Q1-Q4 -->
+            <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-low);margin-bottom:5px;letter-spacing:.05em;">QUARTERLY REVENUE TREND</div>
+            <div class="bc">
+              <div class="bc-bar" style="height:52%;background:rgba(54,214,232,.3)"></div>
+              <div class="bc-bar" style="height:68%;background:rgba(54,214,232,.4)"></div>
+              <div class="bc-bar" style="height:61%;background:rgba(54,214,232,.35)"></div>
+              <div class="bc-bar" style="height:100%;background:linear-gradient(180deg,rgba(54,214,232,.9),rgba(54,214,232,.5));box-shadow:0 0 8px rgba(54,214,232,.35)"></div>
+            </div>
+            <div class="bc-label-row">
+              <span class="bc-label">Q1</span><span class="bc-label">Q2</span>
+              <span class="bc-label">Q3</span><span class="bc-label" style="color:var(--cyan);">Q4▲</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Risk Assessment -->
+        <div class="og-card">
+          <div class="og-card-hdr">
+            <span class="og-card-title">Strategic Risk Assessment</span>
+            <span style="font-family:var(--mono);font-size:8px;color:#fbbf24;">● MEDIUM RISK</span>
+          </div>
+          <div class="og-card-body">
+            <div class="risk-grid">
+              <div class="risk-cell r-crit"><div class="risk-n">2</div>Critical<br>Excess Inventory · Cost Overrun</div>
+              <div class="risk-cell r-high"><div class="risk-n">3</div>High<br>Supplier Lead Time · FX Rate</div>
+              <div class="risk-cell r-med"><div class="risk-n">4</div>Medium<br>Capacity · Demand Var</div>
+              <div class="risk-cell r-ok"><div class="risk-n">5</div>Low<br>Quality · Delivery</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Recommendations (action plan) -->
+        <div class="og-card full">
+          <div class="og-card-hdr">
+            <span class="og-card-title">Executive Recommendations · Action Plan</span>
+            <span style="font-family:var(--mono);font-size:8px;color:var(--text-low);">Generated by Recommendation Engine™</span>
+          </div>
+          <div class="og-card-body">
+            <div class="action-list">
+              <div class="action-item">
+                <span class="action-num">01</span>
+                <span class="action-txt">ลด Excess Inventory ฿3.2M — เริ่ม Clearance Program สำหรับ SKU Dead Stock 13% ภายใน 30 วัน</span>
+                <span class="action-pri"><span class="dmock-badge high" style="font-size:7.5px;">CRITICAL</span></span>
+              </div>
+              <div class="action-item">
+                <span class="action-num">02</span>
+                <span class="action-txt">แก้ Cost Variance -14% — Root Cause: Raw Material Price Increase 8.2% · ให้ Procurement เจรจา Long-term Contract</span>
+                <span class="action-pri"><span class="dmock-badge high" style="font-size:7.5px;">HIGH</span></span>
+              </div>
+              <div class="action-item">
+                <span class="action-num">03</span>
+                <span class="action-txt">เพิ่ม OEE จาก 87.4% → 92% — ผ่าน Predictive Maintenance Line B และ Downtime Reduction Program</span>
+                <span class="action-pri"><span class="dmock-badge med" style="font-size:7.5px;">MEDIUM</span></span>
+              </div>
+              <div class="action-item">
+                <span class="action-num">04</span>
+                <span class="action-txt">Projected Impact: ฿1.8M Cost Savings · ROI 340% ใน 6 เดือน · Health Score เป้าหมาย 96+</span>
+                <span class="action-pri"><span class="dmock-badge ok" style="font-size:7.5px;">BENEFIT</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── PANEL 2: Production Advisor ── -->
+    <div class="og-panel" id="panel-prod">
+      <div class="cmd-line"><span class="cmd-prompt">▶</span><span class="cmd-text">Activate Production Advisor™ &nbsp;→&nbsp; Run Production Improvement · Data Source: SAP COOIS + MIGO + MB52</span></div>
+
+      <!-- mobile summary strip (hidden on desktop) -->
+      <div style="display:flex;gap:8px;margin-bottom:14px;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch;">
+        <div style="flex-shrink:0;padding:6px 12px;border-radius:6px;background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.3);font-family:var(--mono);font-size:8.5px;color:#f87171;white-space:nowrap;">Health: 54/100 ● CRITICAL</div>
+        <div style="flex-shrink:0;padding:6px 12px;border-radius:6px;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);font-family:var(--mono);font-size:8.5px;color:#f87171;white-space:nowrap;">Backlog 15.5% · เฉลี่ย 33 วัน</div>
+        <div style="flex-shrink:0;padding:6px 12px;border-radius:6px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);font-family:var(--mono);font-size:8.5px;color:#fbbf24;white-space:nowrap;">GR Reversal 17.2% · Target &lt;5%</div>
+        <div style="flex-shrink:0;padding:6px 12px;border-radius:6px;background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.2);font-family:var(--mono);font-size:8.5px;color:#4ade80;white-space:nowrap;">Forecast Best Case: 93%</div>
+      </div>
+
+      <!-- row 1: Executive Summary KPIs + Risk Matrix -->
+      <div class="og-grid" style="margin-bottom:14px;">
+
+        <!-- Card A: Business Health + KPIs -->
+        <div class="og-card">
+          <div class="og-card-hdr">
+            <span class="og-card-title">Executive Summary · Business Health Score™</span>
+            <span class="adv-badge"><span class="adv-dot"></span>Production Advisor™</span>
+          </div>
+          <div class="og-card-body">
+            <!-- Health Score -->
+            <div style="display:flex;align-items:flex-end;gap:12px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.06);">
+              <div>
+                <div style="font-family:var(--disp);font-size:38px;font-weight:800;color:#f87171;line-height:1;">54</div>
+                <div style="font-family:var(--mono);font-size:8px;color:var(--text-low);margin-top:2px;">/100 · BUSINESS HEALTH SCORE™</div>
+              </div>
+              <div style="padding:3px 10px;background:rgba(248,113,113,.15);border:1px solid rgba(248,113,113,.3);border-radius:20px;font-family:var(--mono);font-size:8px;color:#f87171;font-weight:600;margin-bottom:6px;">● CRITICAL</div>
+            </div>
+            <!-- 3 KPIs -->
+            <div class="kpi-row">
+              <div class="kpi-cell warn">
+                <div class="kpi-v">78.9%</div>
+                <div class="kpi-l">Order Completion</div>
+                <div class="kpi-t warn">Target 95%</div>
+              </div>
+              <div class="kpi-cell crit">
+                <div class="kpi-v">15.5%</div>
+                <div class="kpi-l">Backlog CRTD</div>
+                <div class="kpi-t dn">เฉลี่ย 33 วัน</div>
+              </div>
+              <div class="kpi-cell crit">
+                <div class="kpi-v">17.2%</div>
+                <div class="kpi-l">GR Reversal Rate</div>
+                <div class="kpi-t dn">Target &lt;5%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card B: Risk Matrix -->
+        <div class="og-card">
+          <div class="og-card-hdr">
+            <span class="og-card-title">Risk Matrix · Likelihood × Impact</span>
+            <span style="font-family:var(--mono);font-size:8px;color:#f87171;">● 1 CRITICAL · 1 HIGH</span>
+          </div>
+          <div class="og-card-body">
+            <div class="risk-grid" style="grid-template-columns:1fr;">
+              <div class="risk-cell r-crit" style="margin-bottom:5px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:7.5px;text-transform:uppercase;letter-spacing:.05em;">Order Backlog ค้าง Release</span>
+                  <span style="font-size:9px;font-weight:700;">CRITICAL</span>
+                </div>
+                <div style="font-size:7px;opacity:.7;margin-top:2px;">Operational Risk · High×High · Owner: Production Supervisor</div>
+              </div>
+              <div class="risk-cell r-high" style="margin-bottom:5px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:7.5px;text-transform:uppercase;letter-spacing:.05em;">GR Reversal / Rework</span>
+                  <span style="font-size:9px;font-weight:700;">HIGH</span>
+                </div>
+                <div style="font-size:7px;opacity:.7;margin-top:2px;">Operational Risk · Med×High · Owner: Planner-A</div>
+              </div>
+              <div class="risk-cell r-med">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:7.5px;text-transform:uppercase;letter-spacing:.05em;">Stock Data Anomaly</span>
+                  <span style="font-size:9px;font-weight:700;">MEDIUM</span>
+                </div>
+                <div style="font-size:7px;opacity:.7;margin-top:2px;">Technology Risk · Med×High · Owner: SAP DTS Team</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- row 2: Key Findings + 5 Whys Root Cause -->
+      <div class="og-grid" style="margin-bottom:14px;">
+
+        <!-- Card C: Key Findings จาก SAP 3 แหล่ง -->
+        <div class="og-card">
+          <div class="og-card-hdr">
+            <span class="og-card-title">Key Findings · SAP Data 3 Sources</span>
+            <span style="font-family:var(--mono);font-size:8px;color:var(--text-low);">COOIS · MIGO · MB52</span>
+          </div>
+          <div class="og-card-body">
+            <div class="action-list">
+              <div class="action-item" style="border-color:rgba(248,113,113,.2);background:rgba(248,113,113,.04);">
+                <span class="action-num" style="color:#f87171;background:rgba(248,113,113,.15);padding:2px 6px;border-radius:10px;font-size:9px;">1</span>
+                <div>
+                  <div style="font-family:var(--mono);font-size:8.5px;font-weight:600;color:var(--text-hi);margin-bottom:2px;">COOIS — Backlog ค้าง CRTD</div>
+                  <div class="action-txt" style="font-size:7.5px;">11/71 orders (15.5%) ยังไม่ Release แม้ Scheduled Start ผ่านแล้ว เฉลี่ย 33 วัน — SKU หลัก: Product-A, Product-B, Product-C</div>
+                </div>
+              </div>
+              <div class="action-item" style="border-color:rgba(251,191,36,.2);background:rgba(251,191,36,.03);">
+                <span class="action-num" style="color:#fbbf24;background:rgba(251,191,36,.15);padding:2px 6px;border-radius:10px;font-size:9px;">2</span>
+                <div>
+                  <div style="font-family:var(--mono);font-size:8.5px;font-weight:600;color:var(--text-hi);margin-bottom:2px;">COOIS — Order ส่งมอบขาด</div>
+                  <div class="action-txt" style="font-size:7.5px;">2/56 TECO orders ส่งมอบน้อยกว่า qty — SKU-Alpha 1 Dr, SKU-Beta 100 KG — ผลกระทบต่ำแต่ต้องติดตาม</div>
+                </div>
+              </div>
+              <div class="action-item" style="border-color:rgba(248,113,113,.2);background:rgba(248,113,113,.03);">
+                <span class="action-num" style="color:#f87171;background:rgba(248,113,113,.15);padding:2px 6px;border-radius:10px;font-size:9px;">3</span>
+                <div>
+                  <div style="font-family:var(--mono);font-size:8.5px;font-weight:600;color:var(--text-hi);margin-bottom:2px;">MIGO — GR Reversal Rate สูง</div>
+                  <div class="action-txt" style="font-size:7.5px;">20/116 รายการ GR Reversal (Mvt 102) = 17.2% มูลค่า -678,449 บาท สูงกว่าเกณฑ์ &lt;5% มาก</div>
+                </div>
+              </div>
+              <div class="action-item" style="border-color:rgba(251,191,36,.2);background:rgba(251,191,36,.03);">
+                <span class="action-num" style="color:#fbbf24;background:rgba(251,191,36,.15);padding:2px 6px;border-radius:10px;font-size:9px;">4</span>
+                <div>
+                  <div style="font-family:var(--mono);font-size:8.5px;font-weight:600;color:var(--text-hi);margin-bottom:2px;">MB52 — Stock Data ผิดปกติ</div>
+                  <div class="action-txt" style="font-size:7.5px;">Material-X มูลค่าสต็อก 147.5M บาท แต่ Unrestricted qty = 0 — ต้องตรวจ Master Data / Unit of Measure</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card D: 5 Whys Root Cause -->
+        <div class="og-card">
+          <div class="og-card-hdr">
+            <span class="og-card-title">Root Cause Analysis · 5 Whys</span>
+            <span style="font-family:var(--mono);font-size:8px;color:#f87171;">● PROCESS/SYSTEM GAP</span>
+          </div>
+          <div class="og-card-body">
+            <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-low);margin-bottom:8px;padding:5px 8px;background:rgba(255,255,255,.03);border-radius:4px;border-left:2px solid rgba(248,113,113,.5);">
+              Problem: 11/71 orders (15.5%) ค้าง CRTD เฉลี่ย 33 วัน ที่ Plant-01
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="display:flex;gap:8px;align-items:flex-start;">
+                <div style="flex-shrink:0;width:44px;padding:3px 0;background:rgba(91,130,246,.25);border-radius:3px;text-align:center;font-family:var(--mono);font-size:7px;color:#818cf8;font-weight:600;">Why 1</div>
+                <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-mid);">Order ไม่ผ่านขั้นตอน Release ใน SAP — ยังค้าง CRTD เกินกำหนด</div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start;">
+                <div style="flex-shrink:0;width:44px;padding:3px 0;background:rgba(91,130,246,.25);border-radius:3px;text-align:center;font-family:var(--mono);font-size:7px;color:#818cf8;font-weight:600;">Why 2</div>
+                <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-mid);">Component Availability Check ยังไม่ confirm ครบ — Product-A, Product-B มี lead time จากผู้ผลิตนอก</div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start;">
+                <div style="flex-shrink:0;width:44px;padding:3px 0;background:rgba(251,191,36,.2);border-radius:3px;text-align:center;font-family:var(--mono);font-size:7px;color:#fbbf24;font-weight:600;">Why 3</div>
+                <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-mid);">6/11 orders อยู่ภายใต้ Planner-A ซึ่งมี backlog rate 25% — สูงกว่าค่าเฉลี่ย 2 เท่า</div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start;">
+                <div style="flex-shrink:0;width:44px;padding:3px 0;background:rgba(251,191,36,.2);border-radius:3px;text-align:center;font-family:var(--mono);font-size:7px;color:#fbbf24;font-weight:600;">Why 4</div>
+                <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-mid);">Planner-A รับผิดชอบ SKU Specialty/Coating จำนวนน้อยแต่ lead time สูง ไม่มี exception report</div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start;">
+                <div style="flex-shrink:0;width:44px;padding:3px 0;background:rgba(248,113,113,.25);border-radius:3px;text-align:center;font-family:var(--mono);font-size:7px;color:#f87171;font-weight:600;">Root</div>
+                <div style="font-family:var(--mono);font-size:7.5px;color:#f87171;font-weight:600;">Production dashboard ไม่มี view แยก backlog ตาม Planner — ทีมไม่เห็น hotspot จนกว่าจะสาย</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- row 3: Recommendations + Action Plan (full width) -->
+      <div class="og-grid">
+        <div class="og-card full">
+          <div class="og-card-hdr">
+            <span class="og-card-title">Recommendations + Action Plan · Forecast: Order Completion 30 วันข้างหน้า</span>
+            <span style="font-family:var(--mono);font-size:8px;color:#4ade80;">● LINKED TO ROOT CAUSE</span>
+          </div>
+          <div class="og-card-body">
+            <!-- Forecast scenarios -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.06);">
+              <div style="padding:8px;border:1px solid rgba(248,113,113,.25);border-radius:5px;background:rgba(248,113,113,.04);">
+                <div style="font-family:var(--mono);font-size:7px;color:#f87171;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Worst Case</div>
+                <div style="font-family:var(--disp);font-size:18px;font-weight:700;color:#f87171;">72%</div>
+                <div style="font-family:var(--mono);font-size:7px;color:var(--text-low);margin-top:2px;">Backlog ไม่ถูกแก้ไข</div>
+              </div>
+              <div style="padding:8px;border:1px solid rgba(251,191,36,.25);border-radius:5px;background:rgba(251,191,36,.04);">
+                <div style="font-family:var(--mono);font-size:7px;color:#fbbf24;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Expected</div>
+                <div style="font-family:var(--disp);font-size:18px;font-weight:700;color:#fbbf24;">85%</div>
+                <div style="font-family:var(--mono);font-size:7px;color:var(--text-low);margin-top:2px;">Quick Win สำเร็จบางส่วน</div>
+              </div>
+              <div style="padding:8px;border:1px solid rgba(74,222,128,.25);border-radius:5px;background:rgba(74,222,128,.04);">
+                <div style="font-family:var(--mono);font-size:7px;color:#4ade80;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Best Case</div>
+                <div style="font-family:var(--disp);font-size:18px;font-weight:700;color:#4ade80;">93%</div>
+                <div style="font-family:var(--mono);font-size:7px;color:var(--text-low);margin-top:2px;">ทุก Quick Win สำเร็จครบ</div>
+              </div>
+            </div>
+            <!-- Action items -->
+            <div class="action-list">
+              <div class="action-item">
+                <span class="action-num">01</span>
+                <span class="action-txt"><strong style="color:var(--text-hi);">Quick Win ≤30 วัน:</strong> เปิด Daily Backlog Exception Report แยกตาม Planner ใน Production Dashboard (แก้ Root Cause: ไม่มี visibility ระดับ Planner) — ปลดล็อก backlog 11 orders มูลค่า ~0.52M บาท</span>
+                <span class="action-pri"><span class="dmock-badge high" style="font-size:7.5px;">CRITICAL</span></span>
+              </div>
+              <div class="action-item">
+                <span class="action-num">02</span>
+                <span class="action-txt"><strong style="color:var(--text-hi);">Quick Win ≤30 วัน:</strong> ตรวจสอบและแก้ไข Master Data Material-X ก่อนใช้ตัวเลขสต็อก 147.5M บาทในรายงานการเงิน — ป้องกันรายงานผิดพลาด</span>
+                <span class="action-pri"><span class="dmock-badge high" style="font-size:7.5px;">HIGH</span></span>
+              </div>
+              <div class="action-item">
+                <span class="action-num">03</span>
+                <span class="action-txt"><strong style="color:var(--text-hi);">Short-Term 1–3 เดือน:</strong> ตั้งทีมสอบสวน GR Reversal ร่วม QA สำหรับวัสดุที่ reversal ซ้ำ &gt;2 ครั้ง/order — ลด Reversal value จาก 678K บาท ลง &gt;50%</span>
+                <span class="action-pri"><span class="dmock-badge med" style="font-size:7.5px;">MEDIUM</span></span>
+              </div>
+              <div class="action-item">
+                <span class="action-num">04</span>
+                <span class="action-txt"><strong style="color:var(--text-hi);">Long-Term 3+ เดือน:</strong> ผนวก Exception Report เข้า SAP S/4HANA PP-PI Go-Live เป็น Standard KUT module — ป้องกัน backlog ซ้ำหลัง Go-Live</span>
+                <span class="action-pri"><span class="dmock-badge ok" style="font-size:7.5px;">LONG-TERM</span></span>
+              </div>
+            </div>
+            <!-- ROI summary -->
+            <div style="margin-top:10px;padding:8px 12px;background:rgba(74,222,128,.05);border:1px solid rgba(74,222,128,.15);border-radius:5px;font-family:var(--mono);font-size:7.5px;color:var(--text-mid);">
+              <strong style="color:#4ade80;">Estimated Impact:</strong> &nbsp; Backlog Value Recovered ~0.52M บาท &nbsp;·&nbsp; GR Reversal ลด -678K บาท &nbsp;·&nbsp; ใช้ทรัพยากรภายใน ไม่ต้องลงทุนเพิ่ม &nbsp;·&nbsp; Deadline: ภายใน 30 วัน
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── PANEL 3: Inventory Advisor ── -->
+    <div class="og-panel" id="panel-inv">
+      <div class="cmd-line"><span class="cmd-prompt">▶</span><span class="cmd-text">Activate Inventory Advisor™ &nbsp;→&nbsp; Run Inventory Optimization + Excess Inventory Analysis</span></div>
+      <div class="og-grid">
+
+        <div class="og-card">
+          <div class="og-card-hdr">
+            <span class="og-card-title">Inventory Assessment · ABC Analysis</span>
+            <span class="adv-badge"><span class="adv-dot"></span>Inventory Advisor™</span>
+          </div>
+          <div class="og-card-body">
+            <div class="kpi-row">
+              <div class="kpi-cell ok"><div class="kpi-v">4.8x</div><div class="kpi-l">Turnover</div><div class="kpi-t up">▲ +0.6</div></div>
+              <div class="kpi-cell warn"><div class="kpi-v">฿3.2M</div><div class="kpi-l">Excess Stock</div><div class="kpi-t warn">⚠ REDUCE</div></div>
+              <div class="kpi-cell crit"><div class="kpi-v">฿420K</div><div class="kpi-l">Dead Stock</div><div class="kpi-t dn">▼ 13%</div></div>
+            </div>
+            <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-low);margin-bottom:6px;letter-spacing:.05em;">STOCK CLASSIFICATION</div>
+            <div class="hbar-row"><span class="hbar-label">A — Active</span><div class="hbar-track"><div class="hbar-fill" style="width:65%;background:rgba(74,222,128,.6)"></div></div><span class="hbar-val" style="color:#4ade80">65%</span></div>
+            <div class="hbar-row"><span class="hbar-label">B — Slow</span><div class="hbar-track"><div class="hbar-fill" style="width:22%;background:rgba(251,191,36,.6)"></div></div><span class="hbar-val" style="color:#fbbf24">22%</span></div>
+            <div class="hbar-row"><span class="hbar-label">C — Dead</span><div class="hbar-track"><div class="hbar-fill" style="width:13%;background:rgba(248,113,113,.6)"></div></div><span class="hbar-val" style="color:#f87171">13%</span></div>
+          </div>
+        </div>
+
+        <div class="og-card">
+          <div class="og-card-hdr"><span class="og-card-title">Safety Stock + Stock Coverage</span></div>
+          <div class="og-card-body">
+            <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-low);margin-bottom:8px;letter-spacing:.05em;">COVERAGE DAYS BY CATEGORY</div>
+            <div class="bc" style="height:56px;">
+              <div class="bc-bar" style="height:100%;background:rgba(248,113,113,.5)"></div>
+              <div class="bc-bar" style="height:72%;background:rgba(251,191,36,.5)"></div>
+              <div class="bc-bar" style="height:58%;background:rgba(54,214,232,.5)"></div>
+              <div class="bc-bar" style="height:82%;background:rgba(251,191,36,.45)"></div>
+              <div class="bc-bar" style="height:45%;background:rgba(74,222,128,.55)"></div>
+            </div>
+            <div class="bc-label-row">
+              <span class="bc-label" style="color:#f87171">RM-A<br>120d</span>
+              <span class="bc-label" style="color:#fbbf24">RM-B<br>86d</span>
+              <span class="bc-label" style="color:var(--cyan)">WIP<br>22d</span>
+              <span class="bc-label" style="color:#fbbf24">FG-X<br>95d</span>
+              <span class="bc-label" style="color:#4ade80">FG-Y<br>18d</span>
+            </div>
+            <div style="margin-top:8px;font-family:var(--mono);font-size:7.5px;color:#fbbf24;">⚠ RM-A และ FG-X เกิน Safety Stock Target 45 วัน</div>
+          </div>
+        </div>
+
+        <div class="og-card full">
+          <div class="og-card-hdr"><span class="og-card-title">Inventory Optimization Plan · Cost Reduction Opportunities</span></div>
+          <div class="og-card-body">
+            <div class="action-list">
+              <div class="action-item"><span class="action-num">01</span><span class="action-txt">Clearance Program: Dead Stock 13% (฿420K) — Flash Sale + Return to Supplier ภายใน 45 วัน ลด Holding Cost ฿38K/เดือน</span><span class="action-pri"><span class="dmock-badge high" style="font-size:7.5px;">CRITICAL</span></span></div>
+              <div class="action-item"><span class="action-num">02</span><span class="action-txt">RM-A Safety Stock ลดจาก 120 → 45 วัน — ประหยัด Working Capital ฿1.4M ผ่าน Supplier VMI Agreement</span><span class="action-pri"><span class="dmock-badge med" style="font-size:7.5px;">60 DAYS</span></span></div>
+              <div class="action-item"><span class="action-num">03</span><span class="action-txt">เป้าหมาย Turnover 6.5x ใน Q2 — ลด Inventory Value ฿2.1M · Working Capital Freed ฿1.8M · ROI 410%</span><span class="action-pri"><span class="dmock-badge ok" style="font-size:7.5px;">ROI 410%</span></span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── PANEL 4: Finance Advisor ── -->
+    <div class="og-panel" id="panel-fin">
+      <div class="cmd-line"><span class="cmd-prompt">▶</span><span class="cmd-text">Activate Finance Advisor™ &nbsp;→&nbsp; Run Financial Performance Review + Cost Optimization Review</span></div>
+      <div class="og-grid">
+
+        <div class="og-card">
+          <div class="og-card-hdr">
+            <span class="og-card-title">Financial Review · P&L Summary</span>
+            <span class="adv-badge"><span class="adv-dot"></span>Finance Advisor™</span>
+          </div>
+          <div class="og-card-body">
+            <div class="kpi-row">
+              <div class="kpi-cell ok"><div class="kpi-v">฿18.4M</div><div class="kpi-l">Revenue</div><div class="kpi-t up">▲ 12.3%</div></div>
+              <div class="kpi-cell warn"><div class="kpi-v">18.6%</div><div class="kpi-l">EBITDA Margin</div><div class="kpi-t warn">Target 22%</div></div>
+            </div>
+            <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-low);margin-bottom:6px;letter-spacing:.05em;">COST STRUCTURE BREAKDOWN</div>
+            <div class="hbar-row"><span class="hbar-label">Raw Material</span><div class="hbar-track"><div class="hbar-fill" style="width:48%;background:rgba(248,113,113,.55)"></div></div><span class="hbar-val" style="color:#f87171">48%</span></div>
+            <div class="hbar-row"><span class="hbar-label">Labor</span><div class="hbar-track"><div class="hbar-fill" style="width:22%;background:rgba(54,214,232,.45)"></div></div><span class="hbar-val" style="color:var(--cyan)">22%</span></div>
+            <div class="hbar-row"><span class="hbar-label">Overhead</span><div class="hbar-track"><div class="hbar-fill" style="width:17%;background:rgba(251,191,36,.45)"></div></div><span class="hbar-val" style="color:#fbbf24">17%</span></div>
+            <div class="hbar-row"><span class="hbar-label">Logistics</span><div class="hbar-track"><div class="hbar-fill" style="width:13%;background:rgba(74,222,128,.4)"></div></div><span class="hbar-val" style="color:#4ade80">13%</span></div>
+          </div>
+        </div>
+
+        <div class="og-card">
+          <div class="og-card-hdr"><span class="og-card-title">Budget Variance · Forecast vs Actual</span></div>
+          <div class="og-card-body">
+            <div class="kpi-row">
+              <div class="kpi-cell crit"><div class="kpi-v">-14%</div><div class="kpi-l">Cost Variance</div><div class="kpi-t dn">Over Budget</div></div>
+              <div class="kpi-cell ok"><div class="kpi-v">฿1.8M</div><div class="kpi-l">Savings Found</div><div class="kpi-t up">▲ Identified</div></div>
+            </div>
+            <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-low);margin-bottom:5px;letter-spacing:.05em;">MONTHLY SPEND vs BUDGET</div>
+            <div class="bc" style="height:48px;">
+              <div class="bc-bar" style="height:62%;background:rgba(74,222,128,.4)"></div>
+              <div class="bc-bar" style="height:78%;background:rgba(251,191,36,.5)"></div>
+              <div class="bc-bar" style="height:100%;background:rgba(248,113,113,.55);box-shadow:0 0 6px rgba(248,113,113,.3)"></div>
+              <div class="bc-bar" style="height:88%;background:rgba(248,113,113,.45)"></div>
+              <div class="bc-bar" style="height:72%;background:rgba(251,191,36,.45)"></div>
+              <div class="bc-bar" style="height:58%;background:rgba(74,222,128,.4);border:1px dashed rgba(74,222,128,.4)"></div>
+            </div>
+            <div class="bc-label-row">
+              <span class="bc-label">Jul</span><span class="bc-label">Aug</span>
+              <span class="bc-label" style="color:#f87171">Sep▲</span><span class="bc-label">Oct</span>
+              <span class="bc-label">Nov</span><span class="bc-label" style="color:#4ade80">Dec▼</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="og-card full">
+          <div class="og-card-hdr"><span class="og-card-title">Cost Optimization Plan · ROI Analysis</span></div>
+          <div class="og-card-body">
+            <div class="action-list">
+              <div class="action-item"><span class="action-num">01</span><span class="action-txt">Raw Material -8.2% overspend — ให้ Procurement เจรจา Long-term Contract 3 Supplier หลัก คาดประหยัด ฿860K/ปี</span><span class="action-pri"><span class="dmock-badge high" style="font-size:7.5px;">CRITICAL</span></span></div>
+              <div class="action-item"><span class="action-num">02</span><span class="action-txt">Overhead Reduction: Energy Audit + Production Scheduling Optimization — Target -12% Overhead ภายใน Q1</span><span class="action-pri"><span class="dmock-badge med" style="font-size:7.5px;">Q1 TARGET</span></span></div>
+              <div class="action-item"><span class="action-num">03</span><span class="action-txt">Combined Impact: EBITDA Margin 18.6% → 22.4% ใน 2 ไตรมาส · Free Cash Flow เพิ่ม ฿1.2M · ROI 340%</span><span class="action-pri"><span class="dmock-badge ok" style="font-size:7.5px;">ROI 340%</span></span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── PANEL 5: Board Presentation ── -->
+    <div class="og-panel" id="panel-board">
+      <div class="cmd-line"><span class="cmd-prompt">▶</span><span class="cmd-text">Activate Executive Advisor™ &nbsp;→&nbsp; Generate Board Presentation · 12 Slides</span></div>
+      <div class="og-grid">
+
+        <div class="og-card">
+          <div class="og-card-hdr">
+            <span class="og-card-title">Slide 1 / 12 — Executive Summary</span>
+            <span style="font-family:var(--mono);font-size:8px;color:var(--text-low);">Board Presentation · Q3 2025</span>
+          </div>
+          <div class="og-card-body">
+            <div class="slide-frame">
+              <div class="slide-eyebrow">MD-UBAOS™ · Executive Analysis</div>
+              <div class="slide-title">Q3 Business Review<br><span style="font-size:9px;font-weight:400;color:var(--text-mid);">Performance · Risk · Recommendations</span></div>
+              <div class="kpi-row" style="margin-bottom:0;">
+                <div class="kpi-cell ok" style="padding:5px 7px;"><div class="kpi-v" style="font-size:12px;">94</div><div class="kpi-l">Health Score</div></div>
+                <div class="kpi-cell ok" style="padding:5px 7px;"><div class="kpi-v" style="font-size:12px;">▲12.3%</div><div class="kpi-l">Revenue Growth</div></div>
+                <div class="kpi-cell warn" style="padding:5px 7px;"><div class="kpi-v" style="font-size:12px;color:#fbbf24;">Medium</div><div class="kpi-l">Risk Level</div></div>
+              </div>
+            </div>
+            <div class="slide-progress">
+              <div class="slide-pip" style="background:var(--cyan)"></div>
+              <div class="slide-pip" style="background:rgba(255,255,255,.1)"></div>
+              <div class="slide-pip" style="background:rgba(255,255,255,.1)"></div>
+              <div class="slide-pip" style="background:rgba(255,255,255,.1)"></div>
+              <div class="slide-pip" style="background:rgba(255,255,255,.1)"></div>
+              <div class="slide-pip" style="background:rgba(255,255,255,.08)"></div>
+            </div>
+            <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-low);margin-top:6px;">Slides: Executive Summary · KPI · Risk · Production · Inventory · Finance · Recommendations · Action Plan · ROI · Appendix</div>
+          </div>
+        </div>
+
+        <div class="og-card">
+          <div class="og-card-hdr">
+            <span class="og-card-title">Slide 5 / 12 — KPI Dashboard</span>
+          </div>
+          <div class="og-card-body">
+            <div class="slide-frame">
+              <div class="slide-eyebrow">KEY PERFORMANCE INDICATORS · Q3 vs Q2</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;">
+                <div class="kpi-cell ok" style="padding:6px 8px;"><div class="kpi-v" style="font-size:13px;">87.4%</div><div class="kpi-l">OEE</div><div class="kpi-t up">▲ +2.1%</div></div>
+                <div class="kpi-cell warn" style="padding:6px 8px;"><div class="kpi-v" style="font-size:13px;">96.2%</div><div class="kpi-l">Forecast Acc.</div><div class="kpi-t up">▲ +1.4%</div></div>
+                <div class="kpi-cell crit" style="padding:6px 8px;"><div class="kpi-v" style="font-size:13px;">-14%</div><div class="kpi-l">Cost Variance</div><div class="kpi-t dn">▼ Over Budget</div></div>
+                <div class="kpi-cell warn" style="padding:6px 8px;"><div class="kpi-v" style="font-size:13px;">4.8x</div><div class="kpi-l">Inv. Turnover</div><div class="kpi-t up">▲ +0.6x</div></div>
+              </div>
+            </div>
+            <div class="slide-progress">
+              <div class="slide-pip" style="background:rgba(255,255,255,.08)"></div>
+              <div class="slide-pip" style="background:rgba(255,255,255,.08)"></div>
+              <div class="slide-pip" style="background:rgba(255,255,255,.08)"></div>
+              <div class="slide-pip" style="background:rgba(255,255,255,.08)"></div>
+              <div class="slide-pip" style="background:var(--cyan)"></div>
+              <div class="slide-pip" style="background:rgba(255,255,255,.08)"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="og-card full">
+          <div class="og-card-hdr">
+            <span class="og-card-title">Slide 10 / 12 — Action Plan & ROI</span>
+            <span style="font-family:var(--mono);font-size:8px;color:#4ade80;">● PRESENTATION READY</span>
+          </div>
+          <div class="og-card-body">
+            <div class="slide-frame">
+              <div class="slide-eyebrow">STRATEGIC ACTION PLAN · ESTIMATED ROI</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
+                <div style="padding:7px;border:1px solid rgba(248,113,113,.25);border-radius:5px;background:rgba(248,113,113,.05);">
+                  <div style="font-family:var(--mono);font-size:7px;color:#f87171;margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em;">30 Days</div>
+                  <div style="font-family:var(--disp);font-size:11px;font-weight:700;color:var(--text-hi);">฿420K</div>
+                  <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-mid);margin-top:2px;">Dead Stock Clearance</div>
+                </div>
+                <div style="padding:7px;border:1px solid rgba(251,191,36,.25);border-radius:5px;background:rgba(251,191,36,.04);">
+                  <div style="font-family:var(--mono);font-size:7px;color:#fbbf24;margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em;">90 Days</div>
+                  <div style="font-family:var(--disp);font-size:11px;font-weight:700;color:var(--text-hi);">฿1.8M</div>
+                  <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-mid);margin-top:2px;">Cost Savings Identified</div>
+                </div>
+                <div style="padding:7px;border:1px solid rgba(74,222,128,.25);border-radius:5px;background:rgba(74,222,128,.05);">
+                  <div style="font-family:var(--mono);font-size:7px;color:#4ade80;margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em;">6 Months</div>
+                  <div style="font-family:var(--disp);font-size:11px;font-weight:700;color:var(--text-hi);">340%</div>
+                  <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-mid);margin-top:2px;">Projected ROI</div>
+                </div>
+              </div>
+            </div>
+            <div style="font-family:var(--mono);font-size:7.5px;color:var(--text-low);margin-top:8px;">Generated by MD-UBAOS™ Recommendation Engine™ · Forecast Engine™ · Decision Support Engine™ — Export: PDF · PPTX · Power BI</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.og-tab');
+  var panels = document.querySelectorAll('.og-panel');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      panels.forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      var id = 'panel-' + tab.getAttribute('data-panel');
+      var panel = document.getElementById(id);
+      if(panel) panel.classList.add('active');
+    });
+  });
+})();
+</script>
+
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow reveal">DIFFERENTIATION</div>
+    <h2 class="section-title reveal">What Makes MD-UBAOS™ Different</h2>
+    <div class="section-sub reveal">Most AI tools stop at generating text. MD-UBAOS™ runs on an enterprise business framework underneath.</div>
+
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+    <div class="cmp-table reveal">
+      <div class="cmp-row head">
+        <div class="cmp-cell"></div>
+        <div class="cmp-cell">Prompt Library</div>
+        <div class="cmp-cell">Dashboard Template</div>
+        <div class="cmp-cell">Chatbot</div>
+        <div class="cmp-cell ubaos">MD-UBAOS™</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell">Business Framework</div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell ubaos cmp-yes"><svg class="cmp-icon yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell">Industry Knowledge</div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell ubaos cmp-yes"><svg class="cmp-icon yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell">KPI Library</div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no" style="font-family:var(--mono);font-size:10px;color:rgba(251,191,36,.7)">~</div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell ubaos cmp-yes"><svg class="cmp-icon yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell">Risk Library</div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell ubaos cmp-yes"><svg class="cmp-icon yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell">Executive Reporting</div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no" style="font-family:var(--mono);font-size:10px;color:rgba(251,191,36,.7)">~</div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell ubaos cmp-yes"><svg class="cmp-icon yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell">Root Cause Analysis</div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no" style="font-family:var(--mono);font-size:10px;color:rgba(251,191,36,.7)">~</div>
+        <div class="cmp-cell ubaos cmp-yes"><svg class="cmp-icon yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell">Forecasting</div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no" style="font-family:var(--mono);font-size:10px;color:rgba(251,191,36,.7)">~</div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell ubaos cmp-yes"><svg class="cmp-icon yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell">Action Planning</div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no" style="font-family:var(--mono);font-size:10px;color:rgba(251,191,36,.7)">~</div>
+        <div class="cmp-cell ubaos cmp-yes"><svg class="cmp-icon yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell">Enterprise Readiness</div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell cmp-no" style="font-family:var(--mono);font-size:10px;color:rgba(251,191,36,.7)">~</div>
+        <div class="cmp-cell cmp-no"><svg class="cmp-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="cmp-cell ubaos cmp-yes"><svg class="cmp-icon yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+    </div>
+    </div><!-- end cmp scroll wrapper -->
+  </div>
+</section>
+
+<style>
+.cred-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;text-align:left;}
+.cred-stat{padding:28px 24px;border-radius:14px;}
+.cred-stat-num{font-family:var(--disp);font-weight:700;font-size:clamp(32px,4vw,48px);background:linear-gradient(135deg,#fff,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-0.02em;}
+.cred-stat-lbl{font-family:var(--mono);font-size:11px;color:var(--text-low);text-transform:uppercase;letter-spacing:.08em;margin-top:6px;}
+.cred-stat-desc{font-size:13px;color:var(--text-mid);margin-top:10px;line-height:1.5;}
+.cred-domains{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:40px;}
+.cred-domain{display:flex;align-items:flex-start;gap:12px;padding:16px 18px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.02);}
+.cred-domain-dot{width:8px;height:8px;border-radius:2px;background:var(--cyan);flex-shrink:0;margin-top:5px;}
+.cred-domain-title{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--text-hi);text-transform:uppercase;letter-spacing:.06em;}
+.cred-domain-sub{font-size:12px;color:var(--text-low);margin-top:3px;}
+@media(max-width:980px){.cred-stats{grid-template-columns:1fr 1fr;}.cred-domains{grid-template-columns:1fr;}}
+@media(max-width:600px){.cred-stats{grid-template-columns:1fr;gap:12px;}.cred-domains{grid-template-columns:1fr;}}
+</style>
+
+<section class="section">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+      <div>
+        <div class="eyebrow reveal">CREDIBILITY</div>
+        <h2 class="section-title reveal">Built From Real<br>Manufacturing Data</h2>
+        <div class="section-sub reveal" style="margin-top:14px;">ไม่ใช่ Academic Framework — MD-UBAOS™ สร้างจากข้อมูลจริง SAP Production Orders, MIGO Movements, MB52 Inventory และ Power BI Reports จากโรงงานจริง</div>
+        <div class="cred-domains reveal" style="margin-top:32px;">
+          <div class="cred-domain"><div class="cred-domain-dot"></div><div><div class="cred-domain-title">SAP PP/MM/FI</div><div class="cred-domain-sub">COOIS · MB52 · MIGO · KOB1 · IW38</div></div></div>
+          <div class="cred-domain"><div class="cred-domain-dot"></div><div><div class="cred-domain-title">Power BI Analytics</div><div class="cred-domain-sub">Production · Inventory · Finance · Quality</div></div></div>
+          <div class="cred-domain"><div class="cred-domain-dot"></div><div><div class="cred-domain-title">Manufacturing KPIs</div><div class="cred-domain-sub">OEE · OTIF · GR Rate · Backlog · Turnover</div></div></div>
+          <div class="cred-domain"><div class="cred-domain-dot"></div><div><div class="cred-domain-title">Executive Reporting</div><div class="cred-domain-sub">Board Deck · PDF · PPTX · Power BI Export</div></div></div>
+        </div>
+      </div>
+      <div class="cred-stats reveal">
+        <div class="cred-stat glass">
+          <div class="cred-stat-num">100+</div>
+          <div class="cred-stat-lbl">Analysis Templates</div>
+          <div class="cred-stat-desc">ครอบคลุม Executive, Production, Inventory, Finance, Quality, Maintenance และอีก 4 domains</div>
+        </div>
+        <div class="cred-stat glass">
+          <div class="cred-stat-num">1,250+</div>
+          <div class="cred-stat-lbl">Use Cases</div>
+          <div class="cred-stat-desc">Use Case ที่ทดสอบจากข้อมูล SAP จริง — ไม่ใช่ Hypothetical Scenario</div>
+        </div>
+        <div class="cred-stat glass">
+          <div class="cred-stat-num">10</div>
+          <div class="cred-stat-lbl">Business Domains</div>
+          <div class="cred-stat-desc">100 Advisors ใน 10 Domains — แต่ละ Advisor มี KPI, Risk และ Recommendation Engine เฉพาะ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="text-align:center;">
+    <div class="eyebrow reveal" style="justify-content:center;">VISION</div>
+    <h2 class="section-title reveal">The Future Of Enterprise<br>Decision Intelligence</h2>
+    <div class="section-sub th reveal" lang="th" style="margin:14px auto 0;">อนาคตของ Business Intelligence</div>
+
+    <div class="tf-grid reveal">
+      <div class="tf-col glass">
+        <div class="tf-label">Today</div>
+        <div class="tf-flow">
+          <div class="tf-node">Data</div>
+          <div class="tf-down"></div>
+          <div class="tf-node">Reports</div>
+          <div class="tf-down"></div>
+          <div class="tf-node">Meetings</div>
+          <div class="tf-down"></div>
+          <div class="tf-node">Decisions</div>
+        </div>
+      </div>
+      <div class="tf-col future glass">
+        <div class="tf-label">Future</div>
+        <div class="tf-flow">
+          <div class="tf-node">Data</div>
+          <div class="tf-down"></div>
+          <div class="tf-node hi">MD-UBAOS™</div>
+          <div class="tf-down"></div>
+          <div class="tf-node">Insights</div>
+          <div class="tf-down"></div>
+          <div class="tf-node">Actions</div>
+          <div class="tf-down"></div>
+          <div class="tf-node hi">Results</div>
+        </div>
+        <div class="tf-ai-strip">
+          <div class="tf-ai-scan"></div>
+          <div class="tf-ai-header"><div class="tf-ai-dot"></div><span class="tf-ai-status">AI ENGINE · LIVE</span></div>
+          <div class="tf-ai-lines">
+            <div class="tf-ai-line"><span class="prompt">›</span><span class="out">Analyzing 148,321 rows…</span></div>
+            <div class="tf-ai-line"><span class="prompt">›</span><span class="out">Inventory Risk: <span style="color:#fbbf24">MEDIUM</span></span></div>
+            <div class="tf-ai-line"><span class="prompt">›</span><span class="out">Savings Identified: <span style="color:#4ade80">฿1.8M</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.cta-section{padding:120px 0;background:linear-gradient(180deg,transparent,rgba(54,214,232,.04));border-top:1px solid var(--line);text-align:center;}
+.cta-title{font-family:var(--disp);font-weight:700;font-size:clamp(32px,4.5vw,54px);letter-spacing:-0.02em;line-height:1.1;margin-top:20px;}
+.cta-sub{color:var(--text-mid);font-size:16px;margin:20px auto 0;max-width:520px;}
+.cta-actions{display:flex;gap:14px;justify-content:center;margin-top:44px;flex-wrap:wrap;}
+.cta-note{font-family:var(--mono);font-size:11px;color:var(--text-low);margin-top:24px;letter-spacing:.04em;}
+.cta-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:800px;margin:52px auto 0;text-align:left;}
+.cta-step{padding:22px 20px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.02);}
+.cta-step-n{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:.1em;margin-bottom:10px;}
+.cta-step-t{font-family:var(--disp);font-weight:600;font-size:15px;color:var(--text-hi);margin-bottom:6px;}
+.cta-step-d{font-size:13px;color:var(--text-mid);line-height:1.5;}
+@media(max-width:600px){.cta-steps{grid-template-columns:1fr;gap:12px;}}
+</style>
+
+<section class="cta-section">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="justify-content:center;">GET STARTED</div>
+    <h2 class="cta-title reveal">เริ่มต้นใน<br><span style="background:linear-gradient(90deg,var(--cyan),var(--blue-glow));-webkit-background-clip:text;background-clip:text;color:transparent;">3 ขั้นตอน</span></h2>
+    <p class="cta-sub reveal">ไม่ต้องเขียน Prompt ไม่ต้องตั้งค่า ไม่ต้องติดตั้ง — อัปโหลดข้อมูล เลือก Advisor แล้วสั่งงาน</p>
+
+    <div class="cta-steps reveal">
+      <div class="cta-step">
+        <div class="cta-step-n">STEP 01</div>
+        <div class="cta-step-t">Upload Your Data</div>
+        <div class="cta-step-d">SAP Export, Excel, CSV, ERP Extract — รองรับทุกรูปแบบ ไม่มี Format พิเศษ</div>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-n">STEP 02</div>
+        <div class="cta-step-t">Load MD-UBAOS™</div>
+        <div class="cta-step-d">Attach MD_UBAOS.md เข้า AI ของคุณ — ระบบพร้อมใช้งานทันที ไม่ต้อง Setup</div>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-n">STEP 03</div>
+        <div class="cta-step-t">Run Analysis</div>
+        <div class="cta-step-d">พิมพ์คำสั่งภาษาธุรกิจ เช่น "Run Production Improvement" — ได้ผลลัพธ์ภายในนาที</div>
+      </div>
+    </div>
+
+    <div class="cta-actions reveal">
+      <a href="https://line.me/ti/p/~033zhxdd" target="_blank" rel="noopener" class="btn btn-primary"><svg class="foot-icon" style="width:16px;height:16px;"><use href="#icon-line"/></svg>ติดต่อผ่าน LINE</a>
+      <a href="mailto:support@bizmindai.com" class="btn btn-ghost"><svg class="foot-icon" style="width:15px;height:15px;"><use href="#icon-mail"/></svg>support@bizmindai.com</a>
+    </div>
+    <div class="cta-note reveal">MD-UBAOS™ v3.4 · 100 Advisors · 100 Analysis Templates · 1,250+ Use Cases</div>
+  </div>
+</section>
+
+<section class="founder">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">PHILOSOPHY</div>
+    <blockquote>AI should not <span class="dim">replace</span> business expertise.<br>AI should <span style="color:var(--cyan)">amplify</span> business expertise.</blockquote>
+    <p class="th-quote th" lang="th">AI ไม่ได้มาแทนผู้เชี่ยวชาญ AI ช่วยให้ผู้เชี่ยวชาญตัดสินใจได้เร็วขึ้น แม่นยำขึ้น และสร้างผลลัพธ์ทางธุรกิจได้มากขึ้น</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-neg reveal">
+      MD-UBAOS™ is not a Prompt Library.<br>
+      MD-UBAOS™ is not a Dashboard Template.<br>
+      MD-UBAOS™ is not a Chatbot.
+    </div>
+    <div class="foot-pos reveal">MD-UBAOS™ is an AI Business Operating System™<br>designed for enterprise-scale decision making.</div>
+    <div class="foot-tag reveal">Transform Data Into Decisions™</div>
+    <div class="foot-tag-th th reveal" lang="th">เปลี่ยนข้อมูลให้เป็นการตัดสินใจทางธุรกิจ</div>
+    <div class="foot-version">POWERED BY MD-UBAOS™ v3.4</div>
+    <div class="foot-contact reveal">
+      <a href="https://line.me/ti/p/~033zhxdd" target="_blank" rel="noopener" class="line-btn"><svg class="foot-icon"><use href="#icon-line"/></svg>Add on LINE</a>
+      <span class="foot-sep">·</span>
+      <a href="mailto:support@bizmindai.com"><svg class="foot-icon"><use href="#icon-mail"/></svg>support@bizmindai.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile nav toggle
+try{
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  if(navToggle && navLinks){
+    const closeNav = ()=>{
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded','false');
+      navToggle.setAttribute('aria-label','Open menu');
+    };
+    const openNav = ()=>{
+      navLinks.classList.add('open');
+      navToggle.setAttribute('aria-expanded','true');
+      navToggle.setAttribute('aria-label','Close menu');
+    };
+    navToggle.addEventListener('click', ()=>{
+      if(navLinks.classList.contains('open')) closeNav(); else openNav();
+    });
+    navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeNav));
+    document.addEventListener('click', (e)=>{
+      if(!navLinks.contains(e.target) && !navToggle.contains(e.target)) closeNav();
+    });
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') closeNav();
+    });
+  }
+}catch(err){ console.error('Nav toggle init failed:', err); }
+
+// Scroll reveal (progressive enhancement — content is visible by default;
+// only animate if IntersectionObserver is supported)
+try{
+  if('IntersectionObserver' in window){
+    document.documentElement.classList.add('js-ready');
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.05});
+    revealEls.forEach(el=>io.observe(el));
+  }
+}catch(err){ console.error('Scroll reveal init failed:', err); }
+
+// Animated counters
+try{
+  const counters = document.querySelectorAll('.metric-num');
+  if('IntersectionObserver' in window){
+    const counterIO = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const el = e.target;
+          const target = parseInt(el.getAttribute('data-target'),10);
+          const duration = 1400;
+          const start = performance.now();
+          function tick(now){
+            const p = Math.min((now-start)/duration,1);
+            const eased = 1 - Math.pow(1-p,3);
+            el.textContent = Math.round(eased*target).toLocaleString() + (p>=1?'+':'');
+            if(p<1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+          counterIO.unobserve(el);
+        }
+      });
+    },{threshold:0.4});
+    counters.forEach(c=>counterIO.observe(c));
+  }else{
+    // No IntersectionObserver support — show final values immediately
+    counters.forEach(el=>{
+      const target = parseInt(el.getAttribute('data-target'),10);
+      el.textContent = target.toLocaleString() + '+';
+    });
+  }
+}catch(err){
+  console.error('Counter animation failed:', err);
+  document.querySelectorAll('.metric-num').forEach(el=>{
+    const target = parseInt(el.getAttribute('data-target'),10);
+    if(!isNaN(target)) el.textContent = target.toLocaleString() + '+';
+  });
+}
+
+// Page-load orchestrated entrance
+try{
+  const header = document.querySelector('header');
+  const bootEls = document.querySelectorAll('.boot-1,.boot-2,.boot-3,.boot-4');
+  function triggerEntrance(){
+    if(header) header.classList.add('loaded');
+    bootEls.forEach(el=>el.classList.add('loaded'));
+  }
+  if('requestAnimationFrame' in window){
+    requestAnimationFrame(()=>requestAnimationFrame(triggerEntrance));
+  }else{
+    setTimeout(triggerEntrance,50);
+  }
+}catch(err){}
+
+// Arch engine pulse on chip/output hover
+try{
+  const engine = document.getElementById('archEngine');
+  const triggers = document.querySelectorAll('.arch-chip,.arch-out');
+  if(engine && triggers.length){
+    triggers.forEach(el=>{
+      el.addEventListener('mouseenter',()=>{
+        engine.classList.remove('pulse');
+        void engine.offsetWidth;
+        engine.classList.add('pulse');
+      });
+      el.addEventListener('animationend',()=>engine.classList.remove('pulse'));
+    });
+  }
+}catch(err){}
+
+</script>
+</body>
+</html>
